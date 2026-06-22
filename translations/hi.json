@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "हिन्दी", "english_name": "Hindi", "dir": "ltr", "flag": "🇮🇳", "needs_review": true},
+  "ui": {
+    "pick_language_title": "स्वागत है",
+    "pick_language_sub": "कृपया अपनी भाषा चुनें",
+    "form_title": "नौकरी के लिए आवेदन",
+    "form_sub": "कृपया नीचे अपना विवरण भरें",
+    "required_hint": "* वाले फ़ील्ड आवश्यक हैं",
+    "submit": "जमा करें",
+    "submitting": "भेजा जा रहा है…",
+    "back": "वापस",
+    "change_language": "भाषा बदलें",
+    "start_over": "नया आवेदन",
+    "select_placeholder": "— चुनें —",
+    "consent": "जमा करने पर, आपका विवरण भर्ती के उद्देश्य से ALTER EGO की भर्ती प्रणाली (Workable) को भेजा जाता है।",
+    "error_required": "कृपया सभी आवश्यक फ़ील्ड भरें।",
+    "thanks_title": "धन्यवाद!",
+    "thanks_body": "आपका आवेदन प्राप्त हो गया है। हमारी टीम आपसे संपर्क करेगी।",
+    "admin_title": "आवेदन",
+    "admin_retry": "असफल पुनः प्रयास करें",
+    "admin_pending": "पुनः प्रयास की प्रतीक्षा में",
+    "admin_empty": "अभी तक कोई आवेदन नहीं।"
+  },
+  "labels": {
+    "first_name": "नाम",
+    "last_name": "उपनाम",
+    "phone": "फ़ोन नंबर",
+    "email": "ईमेल (यदि हो)",
+    "desired_role": "वांछित पद",
+    "area": "निवास का क्षेत्र",
+    "greek_level": "ग्रीक भाषा का स्तर",
+    "other_languages": "अन्य भाषाएँ जो आप बोलते हैं",
+    "availability": "उपलब्धता",
+    "shifts": "पसंदीदा शिफ़्ट",
+    "work_permit": "ग्रीस में कार्य अनुमति",
+    "amka": "सामाजिक सुरक्षा नंबर (AMKA)",
+    "afm": "कर नंबर (AFM)",
+    "experience": "पिछला कार्य अनुभव",
+    "notes": "कुछ और जो हमें जानना चाहिए"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "सफ़ाईकर्मी",
+      "helper": "सामान्य सहायक",
+      "supervisor": "पर्यवेक्षक / टीम लीडर",
+      "driver": "ड्राइवर",
+      "security": "सुरक्षा",
+      "kitchen": "रसोई / केटरिंग",
+      "gardening": "बागवानी / हरियाली",
+      "other": "अन्य"
+    },
+    "greek_level": {"none": "बिल्कुल नहीं", "basic": "थोड़ी", "good": "अच्छी", "fluent": "धाराप्रवाह"},
+    "availability": {"immediate": "तुरंत शुरू कर सकता/सकती हूँ", "full_time": "पूर्णकालिक", "part_time": "अंशकालिक", "flexible": "लचीला"},
+    "shifts": {"morning": "सुबह", "afternoon": "दोपहर", "night": "रात", "weekends": "सप्ताहांत"},
+    "work_permit": {"yes": "हाँ", "no": "नहीं", "in_process": "प्रक्रियाधीन"}
+  }
+}

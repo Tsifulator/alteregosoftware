@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Українська", "english_name": "Ukrainian", "dir": "ltr", "flag": "🇺🇦", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Ласкаво просимо",
+    "pick_language_sub": "Будь ласка, оберіть вашу мову",
+    "form_title": "Заява про прийом на роботу",
+    "form_sub": "Будь ласка, заповніть свої дані нижче",
+    "required_hint": "Поля, позначені *, обов'язкові",
+    "submit": "Надіслати",
+    "submitting": "Надсилання…",
+    "back": "Назад",
+    "change_language": "Змінити мову",
+    "start_over": "Нова заявка",
+    "select_placeholder": "— оберіть —",
+    "consent": "Надсилаючи, ви передаєте свої дані до системи підбору персоналу ALTER EGO (Workable) для цілей працевлаштування.",
+    "error_required": "Будь ласка, заповніть усі обов'язкові поля.",
+    "thanks_title": "Дякуємо!",
+    "thanks_body": "Вашу заявку отримано. Наша команда зв'яжеться з вами.",
+    "admin_title": "Заявки",
+    "admin_retry": "Повторити невдалі",
+    "admin_pending": "Очікують повтору",
+    "admin_empty": "Заявок поки немає."
+  },
+  "labels": {
+    "first_name": "Ім'я",
+    "last_name": "Прізвище",
+    "phone": "Номер телефону",
+    "email": "Ел. пошта (якщо є)",
+    "desired_role": "Бажана посада",
+    "area": "Район проживання",
+    "greek_level": "Рівень грецької мови",
+    "other_languages": "Інші мови, якими володієте",
+    "availability": "Доступність",
+    "shifts": "Бажані зміни",
+    "work_permit": "Дозвіл на роботу в Греції",
+    "amka": "Номер соц. страхування (AMKA)",
+    "afm": "Податковий номер (AFM)",
+    "experience": "Попередній досвід роботи",
+    "notes": "Що ще нам варто знати"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Прибиральник/прибиральниця",
+      "helper": "Різноробочий",
+      "supervisor": "Супервайзер / керівник бригади",
+      "driver": "Водій",
+      "security": "Охорона",
+      "kitchen": "Кухня / кейтеринг",
+      "gardening": "Садівництво / озеленення",
+      "other": "Інше"
+    },
+    "greek_level": {"none": "Немає", "basic": "Трохи", "good": "Добре", "fluent": "Вільно"},
+    "availability": {"immediate": "Можу почати одразу", "full_time": "Повний день", "part_time": "Неповний день", "flexible": "Гнучкий графік"},
+    "shifts": {"morning": "Ранок", "afternoon": "День", "night": "Ніч", "weekends": "Вихідні"},
+    "work_permit": {"yes": "Так", "no": "Ні", "in_process": "В процесі"}
+  }
+}

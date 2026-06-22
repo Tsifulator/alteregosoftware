@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "اردو", "english_name": "Urdu", "dir": "rtl", "flag": "🇵🇰", "needs_review": true},
+  "ui": {
+    "pick_language_title": "خوش آمدید",
+    "pick_language_sub": "براہ کرم اپنی زبان منتخب کریں",
+    "form_title": "ملازمت کی درخواست",
+    "form_sub": "براہ کرم نیچے اپنی تفصیلات درج کریں",
+    "required_hint": "* والے خانے لازمی ہیں",
+    "submit": "جمع کرائیں",
+    "submitting": "بھیجا جا رہا ہے…",
+    "back": "واپس",
+    "change_language": "زبان تبدیل کریں",
+    "start_over": "نئی درخواست",
+    "select_placeholder": "— منتخب کریں —",
+    "consent": "جمع کرانے پر، آپ کی تفصیلات بھرتی کے مقاصد کے لیے ALTER EGO کے نظام (Workable) کو بھیجی جاتی ہیں۔",
+    "error_required": "براہ کرم تمام لازمی خانے پُر کریں۔",
+    "thanks_title": "شکریہ!",
+    "thanks_body": "آپ کی درخواست موصول ہو گئی۔ ہماری ٹیم آپ سے رابطہ کرے گی۔",
+    "admin_title": "درخواستیں",
+    "admin_retry": "ناکام دوبارہ کوشش کریں",
+    "admin_pending": "دوبارہ کوشش کے منتظر",
+    "admin_empty": "ابھی تک کوئی درخواست نہیں۔"
+  },
+  "labels": {
+    "first_name": "پہلا نام",
+    "last_name": "خاندانی نام",
+    "phone": "فون نمبر",
+    "email": "ای میل (اگر ہو)",
+    "desired_role": "مطلوبہ عہدہ",
+    "area": "رہائش کا علاقہ",
+    "greek_level": "یونانی زبان کی سطح",
+    "other_languages": "دیگر زبانیں جو آپ بولتے ہیں",
+    "availability": "دستیابی",
+    "shifts": "پسندیدہ شفٹیں",
+    "work_permit": "یونان میں کام کا اجازت نامہ",
+    "amka": "سماجی تحفظ نمبر (AMKA)",
+    "afm": "ٹیکس نمبر (AFM)",
+    "experience": "سابقہ کام کا تجربہ",
+    "notes": "کوئی اور بات جو ہمیں معلوم ہونی چاہیے"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "صفائی کرنے والا/والی",
+      "helper": "عام مددگار",
+      "supervisor": "نگران / ٹیم لیڈر",
+      "driver": "ڈرائیور",
+      "security": "سکیورٹی",
+      "kitchen": "باورچی خانہ / کیٹرنگ",
+      "gardening": "باغبانی / سبزہ زار",
+      "other": "دیگر"
+    },
+    "greek_level": {"none": "بالکل نہیں", "basic": "تھوڑی", "good": "اچھی", "fluent": "روانی سے"},
+    "availability": {"immediate": "فوراً شروع کر سکتا/سکتی ہوں", "full_time": "کل وقتی", "part_time": "جز وقتی", "flexible": "لچکدار"},
+    "shifts": {"morning": "صبح", "afternoon": "دوپہر", "night": "رات", "weekends": "ہفتہ وار تعطیلات"},
+    "work_permit": {"yes": "ہاں", "no": "نہیں", "in_process": "زیرِ عمل"}
+  }
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}" dir="{{ dir }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="robots" content="noindex">
+  <title>{{ org }} — {{ t('form_title') }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="{{ 'rtl' if rtl else 'ltr' }}">
+  <header class="topbar">
+    <div class="brand">{{ org }}</div>
+  </header>
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

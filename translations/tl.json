@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Tagalog", "english_name": "Tagalog / Filipino", "dir": "ltr", "flag": "🇵🇭", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Maligayang pagdating",
+    "pick_language_sub": "Pakipili ang iyong wika",
+    "form_title": "Aplikasyon sa trabaho",
+    "form_sub": "Pakipunan ang iyong mga detalye sa ibaba",
+    "required_hint": "Ang mga patlang na may * ay kinakailangan",
+    "submit": "Ipasa",
+    "submitting": "Ipinapadala…",
+    "back": "Bumalik",
+    "change_language": "Palitan ang wika",
+    "start_over": "Bagong aplikasyon",
+    "select_placeholder": "— pumili —",
+    "consent": "Sa pagpapasa, ipapadala ang iyong mga detalye sa sistema ng recruitment ng ALTER EGO (Workable) para sa layuning pang-empleyo.",
+    "error_required": "Pakipunan ang lahat ng kinakailangang patlang.",
+    "thanks_title": "Salamat!",
+    "thanks_body": "Natanggap na ang iyong aplikasyon. Makikipag-ugnayan sa iyo ang aming team.",
+    "admin_title": "Mga aplikasyon",
+    "admin_retry": "Subukang muli ang nabigo",
+    "admin_pending": "Naghihintay na subukang muli",
+    "admin_empty": "Wala pang aplikasyon."
+  },
+  "labels": {
+    "first_name": "Pangalan",
+    "last_name": "Apelyido",
+    "phone": "Numero ng telepono",
+    "email": "Email (kung mayroon)",
+    "desired_role": "Posisyong nais",
+    "area": "Lugar ng tinitirhan",
+    "greek_level": "Antas ng wikang Griyego",
+    "other_languages": "Iba pang wikang nasasalita mo",
+    "availability": "Availability",
+    "shifts": "Mga gustong shift",
+    "work_permit": "Work permit sa Greece",
+    "amka": "Social security number (AMKA)",
+    "afm": "Tax number (AFM)",
+    "experience": "Naunang karanasan sa trabaho",
+    "notes": "Anumang dapat naming malaman"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Tagalinis",
+      "helper": "Pangkalahatang katulong",
+      "supervisor": "Superbisor / lider ng grupo",
+      "driver": "Drayber",
+      "security": "Seguridad",
+      "kitchen": "Kusina / catering",
+      "gardening": "Hardin / paligid",
+      "other": "Iba pa"
+    },
+    "greek_level": {"none": "Wala", "basic": "Kaunti", "good": "Mabuti", "fluent": "Matatas"},
+    "availability": {"immediate": "Pwedeng magsimula agad", "full_time": "Full-time", "part_time": "Part-time", "flexible": "Flexible"},
+    "shifts": {"morning": "Umaga", "afternoon": "Hapon", "night": "Gabi", "weekends": "Katapusan ng linggo"},
+    "work_permit": {"yes": "Oo", "no": "Hindi", "in_process": "Pinoproseso"}
+  }
+}

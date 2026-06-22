@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Shqip", "english_name": "Albanian", "dir": "ltr", "flag": "🇦🇱", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Mirë se vini",
+    "pick_language_sub": "Ju lutemi zgjidhni gjuhën tuaj",
+    "form_title": "Aplikim për punë",
+    "form_sub": "Ju lutemi plotësoni të dhënat tuaja më poshtë",
+    "required_hint": "Fushat me * janë të detyrueshme",
+    "submit": "Dërgo",
+    "submitting": "Po dërgohet…",
+    "back": "Mbrapa",
+    "change_language": "Ndrysho gjuhën",
+    "start_over": "Aplikim i ri",
+    "select_placeholder": "— zgjidhni —",
+    "consent": "Me dërgimin, të dhënat tuaja i dërgohen sistemit të rekrutimit të ALTER EGO (Workable) për qëllime punësimi.",
+    "error_required": "Ju lutemi plotësoni të gjitha fushat e detyrueshme.",
+    "thanks_title": "Faleminderit!",
+    "thanks_body": "Aplikimi juaj u pranua. Ekipi ynë do t'ju kontaktojë.",
+    "admin_title": "Aplikimet",
+    "admin_retry": "Riprovo të dështuarat",
+    "admin_pending": "Në pritje për riprovim",
+    "admin_empty": "Ende nuk ka aplikime."
+  },
+  "labels": {
+    "first_name": "Emri",
+    "last_name": "Mbiemri",
+    "phone": "Numri i telefonit",
+    "email": "Email (nëse keni)",
+    "desired_role": "Pozicioni që dëshironi",
+    "area": "Zona ku banoni",
+    "greek_level": "Niveli i gjuhës greke",
+    "other_languages": "Gjuhë të tjera që flisni",
+    "availability": "Disponueshmëria",
+    "shifts": "Turnet e preferuara",
+    "work_permit": "Leje pune në Greqi",
+    "amka": "Numri i sigurimeve (AMKA)",
+    "afm": "Numri i taksave (AFM)",
+    "experience": "Përvoja e mëparshme e punës",
+    "notes": "Çdo gjë tjetër që duhet të dimë"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Pastrues/e",
+      "helper": "Ndihmës i përgjithshëm",
+      "supervisor": "Mbikëqyrës / udhëheqës ekipi",
+      "driver": "Shofer",
+      "security": "Sigurimi",
+      "kitchen": "Kuzhinë / katering",
+      "gardening": "Kopshtari / mjedis",
+      "other": "Tjetër"
+    },
+    "greek_level": {"none": "Aspak", "basic": "Pak", "good": "Mirë", "fluent": "Rrjedhshëm"},
+    "availability": {"immediate": "Mund të filloj menjëherë", "full_time": "Kohë e plotë", "part_time": "Kohë e pjesshme", "flexible": "Fleksibël"},
+    "shifts": {"morning": "Mëngjes", "afternoon": "Pasdite", "night": "Natë", "weekends": "Fundjavë"},
+    "work_permit": {"yes": "Po", "no": "Jo", "in_process": "Në proces"}
+  }
+}

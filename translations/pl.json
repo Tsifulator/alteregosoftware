@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Polski", "english_name": "Polish", "dir": "ltr", "flag": "🇵🇱", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Witamy",
+    "pick_language_sub": "Proszę wybrać język",
+    "form_title": "Podanie o pracę",
+    "form_sub": "Proszę wypełnić swoje dane poniżej",
+    "required_hint": "Pola oznaczone * są wymagane",
+    "submit": "Wyślij",
+    "submitting": "Wysyłanie…",
+    "back": "Wstecz",
+    "change_language": "Zmień język",
+    "start_over": "Nowe podanie",
+    "select_placeholder": "— wybierz —",
+    "consent": "Po wysłaniu Twoje dane są przekazywane do systemu rekrutacji ALTER EGO (Workable) w celach rekrutacyjnych.",
+    "error_required": "Proszę wypełnić wszystkie wymagane pola.",
+    "thanks_title": "Dziękujemy!",
+    "thanks_body": "Twoje podanie zostało przyjęte. Nasz zespół skontaktuje się z Tobą.",
+    "admin_title": "Podania",
+    "admin_retry": "Ponów nieudane",
+    "admin_pending": "Oczekuje na ponowienie",
+    "admin_empty": "Brak podań."
+  },
+  "labels": {
+    "first_name": "Imię",
+    "last_name": "Nazwisko",
+    "phone": "Numer telefonu",
+    "email": "Email (jeśli masz)",
+    "desired_role": "Stanowisko",
+    "area": "Okolica zamieszkania",
+    "greek_level": "Poziom języka greckiego",
+    "other_languages": "Inne języki, którymi mówisz",
+    "availability": "Dostępność",
+    "shifts": "Preferowane zmiany",
+    "work_permit": "Pozwolenie na pracę w Grecji",
+    "amka": "Numer ubezpieczenia (AMKA)",
+    "afm": "Numer podatkowy (AFM)",
+    "experience": "Wcześniejsze doświadczenie zawodowe",
+    "notes": "Cokolwiek jeszcze powinniśmy wiedzieć"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Sprzątacz/ka",
+      "helper": "Pomoc ogólna",
+      "supervisor": "Kierownik / lider zespołu",
+      "driver": "Kierowca",
+      "security": "Ochrona",
+      "kitchen": "Kuchnia / katering",
+      "gardening": "Ogrodnictwo / tereny zielone",
+      "other": "Inne"
+    },
+    "greek_level": {"none": "Wcale", "basic": "Trochę", "good": "Dobrze", "fluent": "Biegle"},
+    "availability": {"immediate": "Mogę zacząć od zaraz", "full_time": "Pełny etat", "part_time": "Część etatu", "flexible": "Elastyczna"},
+    "shifts": {"morning": "Rano", "afternoon": "Popołudnie", "night": "Noc", "weekends": "Weekendy"},
+    "work_permit": {"yes": "Tak", "no": "Nie", "in_process": "W trakcie"}
+  }
+}

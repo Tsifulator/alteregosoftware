@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "العربية", "english_name": "Arabic", "dir": "rtl", "flag": "🇸🇦", "needs_review": true},
+  "ui": {
+    "pick_language_title": "مرحباً",
+    "pick_language_sub": "الرجاء اختيار لغتك",
+    "form_title": "طلب توظيف",
+    "form_sub": "الرجاء تعبئة بياناتك أدناه",
+    "required_hint": "الحقول المعلَّمة بـ * إلزامية",
+    "submit": "إرسال",
+    "submitting": "جارٍ الإرسال…",
+    "back": "رجوع",
+    "change_language": "تغيير اللغة",
+    "start_over": "طلب جديد",
+    "select_placeholder": "— اختر —",
+    "consent": "بالإرسال، تُرسَل بياناتك إلى نظام التوظيف الخاص بشركة ALTER EGO (Workable) لأغراض التوظيف.",
+    "error_required": "الرجاء تعبئة جميع الحقول الإلزامية.",
+    "thanks_title": "شكراً لك!",
+    "thanks_body": "تم استلام طلبك. سيتواصل معك فريقنا.",
+    "admin_title": "الطلبات",
+    "admin_retry": "إعادة المحاولة للفاشلة",
+    "admin_pending": "في انتظار إعادة المحاولة",
+    "admin_empty": "لا توجد طلبات بعد."
+  },
+  "labels": {
+    "first_name": "الاسم الأول",
+    "last_name": "اسم العائلة",
+    "phone": "رقم الهاتف",
+    "email": "البريد الإلكتروني (إن وُجد)",
+    "desired_role": "الوظيفة المطلوبة",
+    "area": "منطقة السكن",
+    "greek_level": "مستوى اللغة اليونانية",
+    "other_languages": "لغات أخرى تتحدثها",
+    "availability": "التوفر",
+    "shifts": "المناوبات المفضلة",
+    "work_permit": "تصريح العمل في اليونان",
+    "amka": "رقم الضمان الاجتماعي (AMKA)",
+    "afm": "الرقم الضريبي (AFM)",
+    "experience": "الخبرة العملية السابقة",
+    "notes": "أي شيء آخر يجب أن نعرفه"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "عامل/عاملة نظافة",
+      "helper": "مساعد عام",
+      "supervisor": "مشرف / قائد فريق",
+      "driver": "سائق",
+      "security": "أمن وحراسة",
+      "kitchen": "مطبخ / تموين",
+      "gardening": "بستنة / مساحات خضراء",
+      "other": "أخرى"
+    },
+    "greek_level": {"none": "لا شيء", "basic": "قليل", "good": "جيد", "fluent": "طلاقة"},
+    "availability": {"immediate": "يمكنني البدء فوراً", "full_time": "دوام كامل", "part_time": "دوام جزئي", "flexible": "مرن"},
+    "shifts": {"morning": "صباحاً", "afternoon": "بعد الظهر", "night": "ليلاً", "weekends": "عطلات نهاية الأسبوع"},
+    "work_permit": {"yes": "نعم", "no": "لا", "in_process": "قيد المعالجة"}
+  }
+}

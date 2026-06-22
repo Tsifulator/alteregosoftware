@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="admin">
+  <h1>{{ org }} — {{ t('admin_title') }}</h1>
+
+  <div class="status-row">
+    {% if dry_run %}<span class="pill warn">DRY_RUN — nothing is sent to Workable</span>{% endif %}
+    {% if configured %}<span class="pill ok">Workable configured</span>
+    {% else %}<span class="pill warn">Workable NOT configured</span>{% endif %}
+    <span class="pill">{{ submissions|length }} recent · {{ queue|length }} in queue</span>
+  </div>
+
+  {% if queue %}
+  <div class="queue-box">
+    <h2>{{ t('admin_pending') }} ({{ queue|length }})</h2>
+    <ul>
+      {% for q in queue %}<li>{{ q.name or q.id }} <small>· {{ q.queued_at }}</small></li>{% endfor %}
+    </ul>
+    <form method="post" action="/admin/retry">
+      <input type="hidden" name="pin" value="{{ pin }}">
+      <button class="submit-btn">{{ t('admin_retry') }}</button>
+    </form>
+  </div>
+  {% endif %}
+
+  {% if submissions %}
+  <table class="subs">
+    <thead><tr><th>Time</th><th>Name</th><th>Lang</th><th>Status</th><th>Workable</th><th>Note</th></tr></thead>
+    <tbody>
+      {% for s in submissions %}
+      <tr class="st-{{ s.status }}">
+        <td><small>{{ s.ts }}</small></td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.lang }}</td>
+        <td>{{ s.status }}</td>
+        <td>{{ s.workable_id or '—' }}</td>
+        <td><small>{{ s.error or '' }}</small></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>{{ t('admin_empty') }}</p>
+  {% endif %}
+</div>
+{% endblock %}

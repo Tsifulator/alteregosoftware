@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Română", "english_name": "Romanian", "dir": "ltr", "flag": "🇷🇴", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Bun venit",
+    "pick_language_sub": "Vă rugăm să alegeți limba",
+    "form_title": "Cerere de angajare",
+    "form_sub": "Vă rugăm să completați datele dvs. mai jos",
+    "required_hint": "Câmpurile marcate cu * sunt obligatorii",
+    "submit": "Trimite",
+    "submitting": "Se trimite…",
+    "back": "Înapoi",
+    "change_language": "Schimbă limba",
+    "start_over": "Cerere nouă",
+    "select_placeholder": "— alegeți —",
+    "consent": "Prin trimitere, datele dvs. sunt transmise sistemului de recrutare ALTER EGO (Workable) în scopuri de angajare.",
+    "error_required": "Vă rugăm să completați toate câmpurile obligatorii.",
+    "thanks_title": "Mulțumim!",
+    "thanks_body": "Cererea dvs. a fost primită. Echipa noastră vă va contacta.",
+    "admin_title": "Cereri",
+    "admin_retry": "Reîncearcă eșuate",
+    "admin_pending": "În așteptare pentru reîncercare",
+    "admin_empty": "Încă nu există cereri."
+  },
+  "labels": {
+    "first_name": "Prenume",
+    "last_name": "Nume",
+    "phone": "Număr de telefon",
+    "email": "Email (dacă aveți)",
+    "desired_role": "Postul dorit",
+    "area": "Zona unde locuiți",
+    "greek_level": "Nivelul de limba greacă",
+    "other_languages": "Alte limbi vorbite",
+    "availability": "Disponibilitate",
+    "shifts": "Ture preferate",
+    "work_permit": "Permis de muncă în Grecia",
+    "amka": "Număr de asigurări (AMKA)",
+    "afm": "Cod fiscal (AFM)",
+    "experience": "Experiență de muncă anterioară",
+    "notes": "Orice altceva ar trebui să știm"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Personal de curățenie",
+      "helper": "Ajutor general",
+      "supervisor": "Supervizor / șef de echipă",
+      "driver": "Șofer",
+      "security": "Pază / securitate",
+      "kitchen": "Bucătărie / catering",
+      "gardening": "Grădinărit / spații verzi",
+      "other": "Altele"
+    },
+    "greek_level": {"none": "Deloc", "basic": "Puțin", "good": "Bine", "fluent": "Fluent"},
+    "availability": {"immediate": "Pot începe imediat", "full_time": "Normă întreagă", "part_time": "Normă parțială", "flexible": "Flexibil"},
+    "shifts": {"morning": "Dimineață", "afternoon": "După-amiază", "night": "Noapte", "weekends": "Weekenduri"},
+    "work_permit": {"yes": "Da", "no": "Nu", "in_process": "În curs"}
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "فارسی", "english_name": "Farsi / Dari", "dir": "rtl", "flag": "🇮🇷", "needs_review": true},
+  "ui": {
+    "pick_language_title": "خوش آمدید",
+    "pick_language_sub": "لطفاً زبان خود را انتخاب کنید",
+    "form_title": "درخواست کار",
+    "form_sub": "لطفاً اطلاعات خود را در زیر وارد کنید",
+    "required_hint": "فیلدهای دارای * الزامی هستند",
+    "submit": "ارسال",
+    "submitting": "در حال ارسال…",
+    "back": "بازگشت",
+    "change_language": "تغییر زبان",
+    "start_over": "درخواست جدید",
+    "select_placeholder": "— انتخاب کنید —",
+    "consent": "با ارسال، اطلاعات شما برای اهداف استخدام به سامانه استخدام ALTER EGO (Workable) ارسال می‌شود.",
+    "error_required": "لطفاً همه فیلدهای الزامی را تکمیل کنید.",
+    "thanks_title": "متشکریم!",
+    "thanks_body": "درخواست شما دریافت شد. تیم ما با شما تماس خواهد گرفت.",
+    "admin_title": "درخواست‌ها",
+    "admin_retry": "تلاش مجدد برای ناموفق‌ها",
+    "admin_pending": "در انتظار تلاش مجدد",
+    "admin_empty": "هنوز درخواستی وجود ندارد."
+  },
+  "labels": {
+    "first_name": "نام",
+    "last_name": "نام خانوادگی",
+    "phone": "شماره تلفن",
+    "email": "ایمیل (در صورت داشتن)",
+    "desired_role": "شغل مورد نظر",
+    "area": "منطقه محل سکونت",
+    "greek_level": "سطح زبان یونانی",
+    "other_languages": "زبان‌های دیگری که صحبت می‌کنید",
+    "availability": "در دسترس بودن",
+    "shifts": "شیفت‌های مورد علاقه",
+    "work_permit": "مجوز کار در یونان",
+    "amka": "شماره تأمین اجتماعی (AMKA)",
+    "afm": "شماره مالیاتی (AFM)",
+    "experience": "سابقه کاری قبلی",
+    "notes": "هر چیز دیگری که باید بدانیم"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "نظافتچی",
+      "helper": "کمک عمومی",
+      "supervisor": "سرپرست / مسئول تیم",
+      "driver": "راننده",
+      "security": "نگهبانی",
+      "kitchen": "آشپزخانه / پذیرایی",
+      "gardening": "باغبانی / فضای سبز",
+      "other": "سایر"
+    },
+    "greek_level": {"none": "هیچ", "basic": "کم", "good": "خوب", "fluent": "روان"},
+    "availability": {"immediate": "می‌توانم فوراً شروع کنم", "full_time": "تمام‌وقت", "part_time": "پاره‌وقت", "flexible": "انعطاف‌پذیر"},
+    "shifts": {"morning": "صبح", "afternoon": "بعدازظهر", "night": "شب", "weekends": "آخر هفته‌ها"},
+    "work_permit": {"yes": "بله", "no": "خیر", "in_process": "در حال انجام"}
+  }
+}

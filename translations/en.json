@@ -1,0 +1,76 @@
+{
+  "_meta": {"name": "English", "english_name": "English", "dir": "ltr", "flag": "🇬🇧", "needs_review": false},
+  "ui": {
+    "pick_language_title": "Welcome",
+    "pick_language_sub": "Please choose your language",
+    "form_title": "Job application",
+    "form_sub": "Please fill in your details below",
+    "required_hint": "Fields marked * are required",
+    "submit": "Submit",
+    "submitting": "Sending…",
+    "back": "Back",
+    "change_language": "Change language",
+    "start_over": "New application",
+    "select_placeholder": "— choose —",
+    "consent": "By submitting, your details are sent to ALTER EGO's recruitment system (Workable) for hiring purposes.",
+    "error_required": "Please fill in all required fields.",
+    "thanks_title": "Thank you!",
+    "thanks_body": "Your application has been received. Our team will contact you.",
+    "admin_title": "Submissions",
+    "admin_retry": "Retry failed",
+    "admin_pending": "Waiting to retry",
+    "admin_empty": "No submissions yet."
+  },
+  "labels": {
+    "first_name": "First name",
+    "last_name": "Last name",
+    "phone": "Phone number",
+    "email": "Email (if you have one)",
+    "desired_role": "Position you want",
+    "area": "Area where you live",
+    "greek_level": "Greek language level",
+    "other_languages": "Other languages you speak",
+    "availability": "Availability",
+    "shifts": "Preferred shifts",
+    "work_permit": "Work permit in Greece",
+    "amka": "Social security no. (AMKA)",
+    "afm": "Tax no. (AFM)",
+    "experience": "Previous work experience",
+    "notes": "Anything else we should know"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Cleaner",
+      "helper": "General helper",
+      "supervisor": "Supervisor / team leader",
+      "driver": "Driver",
+      "security": "Security",
+      "kitchen": "Kitchen / catering",
+      "gardening": "Gardening / grounds",
+      "other": "Other"
+    },
+    "greek_level": {
+      "none": "None",
+      "basic": "A little",
+      "good": "Good",
+      "fluent": "Fluent"
+    },
+    "availability": {
+      "immediate": "Can start immediately",
+      "full_time": "Full-time",
+      "part_time": "Part-time",
+      "flexible": "Flexible"
+    },
+    "shifts": {
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "night": "Night",
+      "weekends": "Weekends"
+    },
+    "work_permit": {
+      "yes": "Yes",
+      "no": "No",
+      "in_process": "In process"
+    }
+  }
+}

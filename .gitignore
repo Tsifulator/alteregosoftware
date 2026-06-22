@@ -1,0 +1,15 @@
+# secrets
+.env
+
+# local candidate data — NEVER commit personal data
+submissions.json
+queue.json
+logs/
+*.tmp
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store

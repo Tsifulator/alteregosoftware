@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-head">
+  <h1>{{ t('form_title') }}</h1>
+  <p class="sub">{{ t('form_sub') }}</p>
+  <a class="change-lang" href="/">🌐 {{ t('change_language') }}</a>
+</div>
+
+{% if error %}
+  <div class="error-banner">{{ t('error_required') }}</div>
+{% endif %}
+
+<form method="post" action="/submit" id="intake" novalidate>
+  <input type="hidden" name="_lang" value="{{ lang }}">
+
+  {% for f in fields %}
+    <div class="field">
+      <label for="{{ f.key }}">
+        {{ label(f.key) }}{% if f.required %} <span class="req">*</span>{% endif %}
+      </label>
+
+      {% if f.kind in ['text', 'tel', 'email'] %}
+        <input id="{{ f.key }}" name="{{ f.key }}"
+               type="{{ 'tel' if f.kind=='tel' else ('email' if f.kind=='email' else 'text') }}"
+               {% if f.kind=='tel' %}inputmode="tel"{% endif %}
+               {% if f.required %}required{% endif %}
+               autocomplete="off">
+
+      {% elif f.kind == 'textarea' %}
+        <textarea id="{{ f.key }}" name="{{ f.key }}" rows="3"></textarea>
+
+      {% elif f.kind == 'select' %}
+        <select id="{{ f.key }}" name="{{ f.key }}" {% if f.required %}required{% endif %}>
+          <option value="" {% if f.required %}disabled{% endif %} selected>{{ t('select_placeholder') }}</option>
+          {% for opt in f.options %}
+            <option value="{{ opt }}">{{ option_label(lang, f.key, opt) }}</option>
+          {% endfor %}
+        </select>
+
+      {% elif f.kind == 'multiselect' %}
+        <div class="checks">
+          {% for opt in f.options %}
+            <label class="check">
+              <input type="checkbox" name="{{ f.key }}" value="{{ opt }}">
+              <span>{{ option_label(lang, f.key, opt) }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <p class="hint">{{ t('required_hint') }}</p>
+  <p class="consent">{{ t('consent') }}</p>
+  <button type="submit" class="submit-btn" id="submit-btn"
+          data-sending="{{ t('submitting') }}">{{ t('submit') }}</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Prevent double-submit on the kiosk: disable + relabel on first click.
+  document.getElementById('intake').addEventListener('submit', function () {
+    var b = document.getElementById('submit-btn');
+    b.disabled = true;
+    b.textContent = b.dataset.sending;
+  });
+</script>
+{% endblock %}

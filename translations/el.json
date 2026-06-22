@@ -1,0 +1,76 @@
+{
+  "_meta": {"name": "Ελληνικά", "english_name": "Greek", "dir": "ltr", "flag": "🇬🇷", "needs_review": false},
+  "ui": {
+    "pick_language_title": "Καλώς ήρθατε",
+    "pick_language_sub": "Παρακαλώ επιλέξτε τη γλώσσα σας",
+    "form_title": "Αίτηση εργασίας",
+    "form_sub": "Συμπληρώστε τα στοιχεία σας παρακάτω",
+    "required_hint": "Τα πεδία με * είναι υποχρεωτικά",
+    "submit": "Υποβολή",
+    "submitting": "Αποστολή…",
+    "back": "Πίσω",
+    "change_language": "Αλλαγή γλώσσας",
+    "start_over": "Νέα αίτηση",
+    "select_placeholder": "— επιλέξτε —",
+    "consent": "Με την υποβολή, τα στοιχεία σας αποστέλλονται στο σύστημα προσλήψεων της ALTER EGO (Workable) για σκοπούς πρόσληψης.",
+    "error_required": "Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία.",
+    "thanks_title": "Ευχαριστούμε!",
+    "thanks_body": "Η αίτησή σας ελήφθη. Η ομάδα μας θα επικοινωνήσει μαζί σας.",
+    "admin_title": "Υποβολές",
+    "admin_retry": "Επανάληψη αποτυχημένων",
+    "admin_pending": "Σε αναμονή επανάληψης",
+    "admin_empty": "Δεν υπάρχουν υποβολές ακόμα."
+  },
+  "labels": {
+    "first_name": "Όνομα",
+    "last_name": "Επώνυμο",
+    "phone": "Τηλέφωνο",
+    "email": "Email (αν έχετε)",
+    "desired_role": "Θέση που επιθυμείτε",
+    "area": "Περιοχή κατοικίας",
+    "greek_level": "Επίπεδο ελληνικών",
+    "other_languages": "Άλλες γλώσσες που μιλάτε",
+    "availability": "Διαθεσιμότητα",
+    "shifts": "Προτιμώμενες βάρδιες",
+    "work_permit": "Άδεια εργασίας στην Ελλάδα",
+    "amka": "ΑΜΚΑ",
+    "afm": "ΑΦΜ",
+    "experience": "Προηγούμενη εργασιακή εμπειρία",
+    "notes": "Οτιδήποτε άλλο θέλετε να μας πείτε"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Καθαριστής/τρια",
+      "helper": "Βοηθός γενικών καθηκόντων",
+      "supervisor": "Επόπτης / υπεύθυνος ομάδας",
+      "driver": "Οδηγός",
+      "security": "Φύλαξη / security",
+      "kitchen": "Κουζίνα / τροφοδοσία",
+      "gardening": "Κηπουρική / περιβάλλων χώρος",
+      "other": "Άλλο"
+    },
+    "greek_level": {
+      "none": "Καθόλου",
+      "basic": "Λίγα",
+      "good": "Καλά",
+      "fluent": "Άριστα"
+    },
+    "availability": {
+      "immediate": "Άμεση έναρξη",
+      "full_time": "Πλήρης απασχόληση",
+      "part_time": "Μερική απασχόληση",
+      "flexible": "Ευέλικτη"
+    },
+    "shifts": {
+      "morning": "Πρωί",
+      "afternoon": "Απόγευμα",
+      "night": "Νύχτα",
+      "weekends": "Σαββατοκύριακα"
+    },
+    "work_permit": {
+      "yes": "Ναι",
+      "no": "Όχι",
+      "in_process": "Σε διαδικασία"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "বাংলা", "english_name": "Bengali", "dir": "ltr", "flag": "🇧🇩", "needs_review": true},
+  "ui": {
+    "pick_language_title": "স্বাগতম",
+    "pick_language_sub": "অনুগ্রহ করে আপনার ভাষা নির্বাচন করুন",
+    "form_title": "চাকরির আবেদন",
+    "form_sub": "অনুগ্রহ করে নিচে আপনার তথ্য পূরণ করুন",
+    "required_hint": "* চিহ্নিত ঘরগুলো আবশ্যক",
+    "submit": "জমা দিন",
+    "submitting": "পাঠানো হচ্ছে…",
+    "back": "পেছনে",
+    "change_language": "ভাষা পরিবর্তন",
+    "start_over": "নতুন আবেদন",
+    "select_placeholder": "— নির্বাচন করুন —",
+    "consent": "জমা দিলে, আপনার তথ্য নিয়োগের উদ্দেশ্যে ALTER EGO-এর নিয়োগ ব্যবস্থায় (Workable) পাঠানো হয়।",
+    "error_required": "অনুগ্রহ করে সব আবশ্যক ঘর পূরণ করুন।",
+    "thanks_title": "ধন্যবাদ!",
+    "thanks_body": "আপনার আবেদন গৃহীত হয়েছে। আমাদের দল আপনার সাথে যোগাযোগ করবে।",
+    "admin_title": "আবেদনসমূহ",
+    "admin_retry": "ব্যর্থগুলো পুনরায় চেষ্টা করুন",
+    "admin_pending": "পুনঃচেষ্টার অপেক্ষায়",
+    "admin_empty": "এখনও কোনো আবেদন নেই।"
+  },
+  "labels": {
+    "first_name": "নাম",
+    "last_name": "পদবি",
+    "phone": "ফোন নম্বর",
+    "email": "ইমেইল (যদি থাকে)",
+    "desired_role": "কাঙ্ক্ষিত পদ",
+    "area": "বসবাসের এলাকা",
+    "greek_level": "গ্রিক ভাষার স্তর",
+    "other_languages": "আপনি যে অন্যান্য ভাষা বলেন",
+    "availability": "প্রাপ্যতা",
+    "shifts": "পছন্দের শিফট",
+    "work_permit": "গ্রিসে কাজের অনুমতি",
+    "amka": "সামাজিক বীমা নম্বর (AMKA)",
+    "afm": "কর নম্বর (AFM)",
+    "experience": "পূর্ববর্তী কাজের অভিজ্ঞতা",
+    "notes": "আর কিছু যা আমাদের জানা উচিত"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "পরিচ্ছন্নতাকর্মী",
+      "helper": "সাধারণ সহকারী",
+      "supervisor": "সুপারভাইজার / দলনেতা",
+      "driver": "চালক",
+      "security": "নিরাপত্তা",
+      "kitchen": "রান্নাঘর / ক্যাটারিং",
+      "gardening": "বাগান / সবুজায়ন",
+      "other": "অন্যান্য"
+    },
+    "greek_level": {"none": "একদম না", "basic": "অল্প", "good": "ভালো", "fluent": "সাবলীল"},
+    "availability": {"immediate": "এখনই শুরু করতে পারি", "full_time": "পূর্ণকালীন", "part_time": "খণ্ডকালীন", "flexible": "নমনীয়"},
+    "shifts": {"morning": "সকাল", "afternoon": "দুপুর", "night": "রাত", "weekends": "সপ্তাহান্ত"},
+    "work_permit": {"yes": "হ্যাঁ", "no": "না", "in_process": "প্রক্রিয়াধীন"}
+  }
+}

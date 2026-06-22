@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="picker">
+  <h1>{{ t('pick_language_title') }}</h1>
+  <p class="sub">{{ t('pick_language_sub') }}</p>
+  <div class="lang-grid">
+    {% for l in languages %}
+      <a class="lang-card" href="/form/{{ l.code }}" lang="{{ l.code }}" dir="{{ l.dir }}">
+        <span class="flag">{{ l.flag }}</span>
+        <span class="lang-name">{{ l.name }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

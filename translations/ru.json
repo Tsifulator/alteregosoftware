@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Русский", "english_name": "Russian", "dir": "ltr", "flag": "🇷🇺", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Добро пожаловать",
+    "pick_language_sub": "Пожалуйста, выберите язык",
+    "form_title": "Заявление о приёме на работу",
+    "form_sub": "Пожалуйста, заполните свои данные ниже",
+    "required_hint": "Поля со знаком * обязательны",
+    "submit": "Отправить",
+    "submitting": "Отправка…",
+    "back": "Назад",
+    "change_language": "Сменить язык",
+    "start_over": "Новая заявка",
+    "select_placeholder": "— выберите —",
+    "consent": "При отправке ваши данные передаются в систему подбора персонала ALTER EGO (Workable) для целей трудоустройства.",
+    "error_required": "Пожалуйста, заполните все обязательные поля.",
+    "thanks_title": "Спасибо!",
+    "thanks_body": "Ваша заявка получена. Наша команда свяжется с вами.",
+    "admin_title": "Заявки",
+    "admin_retry": "Повторить неудачные",
+    "admin_pending": "Ожидают повтора",
+    "admin_empty": "Заявок пока нет."
+  },
+  "labels": {
+    "first_name": "Имя",
+    "last_name": "Фамилия",
+    "phone": "Номер телефона",
+    "email": "Эл. почта (если есть)",
+    "desired_role": "Желаемая должность",
+    "area": "Район проживания",
+    "greek_level": "Уровень греческого языка",
+    "other_languages": "Другие языки, которыми владеете",
+    "availability": "Доступность",
+    "shifts": "Предпочитаемые смены",
+    "work_permit": "Разрешение на работу в Греции",
+    "amka": "Номер соц. страхования (AMKA)",
+    "afm": "Налоговый номер (AFM)",
+    "experience": "Предыдущий опыт работы",
+    "notes": "Что ещё нам следует знать"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Уборщик/уборщица",
+      "helper": "Разнорабочий",
+      "supervisor": "Супервайзер / руководитель бригады",
+      "driver": "Водитель",
+      "security": "Охрана",
+      "kitchen": "Кухня / кейтеринг",
+      "gardening": "Садовник / озеленение",
+      "other": "Другое"
+    },
+    "greek_level": {"none": "Нет", "basic": "Немного", "good": "Хорошо", "fluent": "Свободно"},
+    "availability": {"immediate": "Могу начать сразу", "full_time": "Полный день", "part_time": "Неполный день", "flexible": "Гибкий график"},
+    "shifts": {"morning": "Утро", "afternoon": "День", "night": "Ночь", "weekends": "Выходные"},
+    "work_permit": {"yes": "Да", "no": "Нет", "in_process": "В процессе"}
+  }
+}
