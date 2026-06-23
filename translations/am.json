@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "አማርኛ", "english_name": "Amharic", "dir": "ltr", "flag": "🇪🇹", "needs_review": true},
+  "ui": {
+    "pick_language_title": "እንኳን ደህና መጡ",
+    "pick_language_sub": "እባክዎ ቋንቋዎን ይምረጡ",
+    "form_title": "የሥራ ማመልከቻ",
+    "form_sub": "እባክዎ ከታች ዝርዝሮችዎን ይሙሉ",
+    "required_hint": "በ * የተመለከቱ መስኮች የግዴታ ናቸው",
+    "submit": "አስገባ",
+    "submitting": "በመላክ ላይ…",
+    "back": "ተመለስ",
+    "change_language": "ቋንቋ ቀይር",
+    "start_over": "አዲስ ማመልከቻ",
+    "select_placeholder": "— ይምረጡ —",
+    "consent": "ሲያስገቡ፣ ዝርዝሮችዎ ለቅጥር ዓላማ ወደ ALTER EGO የቅጥር ሥርዓት (Workable) ይላካሉ።",
+    "error_required": "እባክዎ ሁሉንም የግዴታ መስኮች ይሙሉ።",
+    "thanks_title": "አመሰግናለሁ!",
+    "thanks_body": "ማመልከቻዎ ደርሷል። ቡድናችን ያገኝዎታል።",
+    "admin_title": "ማመልከቻዎች",
+    "admin_retry": "ያልተሳኩትን እንደገና ሞክር",
+    "admin_pending": "እንደገና ለመሞከር በመጠባበቅ ላይ",
+    "admin_empty": "እስካሁን ምንም ማመልከቻ የለም።"
+  },
+  "labels": {
+    "first_name": "ስም",
+    "last_name": "የአባት ስም",
+    "phone": "ስልክ ቁጥር",
+    "email": "ኢሜይል (ካለ)",
+    "desired_role": "የሚፈልጉት ሥራ",
+    "area": "የመኖሪያ አካባቢ",
+    "greek_level": "የግሪክ ቋንቋ ደረጃ",
+    "other_languages": "የሚናገሩዋቸው ሌሎች ቋንቋዎች",
+    "availability": "ዝግጁነት",
+    "shifts": "የሚመርጡት ፈረቃ",
+    "work_permit": "በግሪክ የሥራ ፈቃድ",
+    "amka": "የማኅበራዊ ዋስትና ቁጥር (AMKA)",
+    "afm": "የግብር ቁጥር (AFM)",
+    "experience": "ቀዳሚ የሥራ ልምድ",
+    "notes": "ማወቅ ያለብን ሌላ ነገር"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "አጽጂ",
+      "helper": "አጠቃላይ ረዳት",
+      "supervisor": "ተቆጣጣሪ / የቡድን መሪ",
+      "driver": "ሹፌር",
+      "security": "ጥበቃ",
+      "kitchen": "ኩሽና / ምግብ አቅርቦት",
+      "gardening": "የአትክልት ሥራ / አረንጓዴ ቦታ",
+      "other": "ሌላ"
+    },
+    "greek_level": {"none": "ምንም", "basic": "ትንሽ", "good": "ጥሩ", "fluent": "አቀላጥፎ"},
+    "availability": {"immediate": "ወዲያውኑ መጀመር እችላለሁ", "full_time": "ሙሉ ጊዜ", "part_time": "ትርፍ ጊዜ", "flexible": "ተለዋዋጭ"},
+    "shifts": {"morning": "ጠዋት", "afternoon": "ከሰዓት", "night": "ሌሊት", "weekends": "ቅዳሜና እሁድ"},
+    "work_permit": {"yes": "አዎ", "no": "የለም", "in_process": "በሂደት ላይ"}
+  }
+}

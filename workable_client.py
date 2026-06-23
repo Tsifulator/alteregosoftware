@@ -28,6 +28,7 @@ from config import (
     LOGS_DIR,
     PLACEHOLDER_EMAIL_DOMAIN,
     TRANSLATE_FREETEXT,
+    TRANSLITERATE_NAMES,
     WORKABLE_API_TOKEN,
     WORKABLE_INTAKE_JOB,
     WORKABLE_SOURCED,
@@ -57,6 +58,37 @@ def _synth_email(phone: str) -> str:
     return f"candidate.{digits}@{PLACEHOLDER_EMAIL_DOMAIN}"
 
 
+def _to_latin(text: str, lang: str) -> str:
+    """Romanize a non-Latin name/place to the Latin alphabet for Workable.
+
+    Greek-speaker input is left in Greek (HR reads Greek). Already-Latin text is
+    returned untouched. Otherwise: best-effort LLM romanization (best quality),
+    then an offline transliterator, then the original — it never raises.
+    """
+    text = (text or "").strip()
+    if not text or text.isascii() or lang == "el" or not TRANSLITERATE_NAMES:
+        return text
+    try:
+        from llm import generate
+        out = generate(
+            "Romanize (transliterate to the Latin/English alphabet) the following "
+            "name or place. Output ONLY the romanized text in Title Case, nothing else.\n\n"
+            + text
+        ).strip().strip('"')
+        if out and out.isascii():
+            return out
+    except Exception as e:
+        print(f"  ⚠ LLM romanization skipped: {e}")
+    try:
+        from unidecode import unidecode
+        out = unidecode(text).strip()
+        if out:
+            return out.title()
+    except Exception:
+        pass
+    return text   # original script beats nothing
+
+
 def _translate_to_greek(text: str) -> str | None:
     """Best-effort translation to Greek. Returns None on any problem — never raises."""
     if not TRANSLATE_FREETEXT or not text.strip():
@@ -83,12 +115,14 @@ def _value_in_greek(key: str, raw, kind: str) -> str:
     return str(raw).strip()
 
 
-def _compose_summary(lang: str, data: dict, no_email: bool) -> str:
+def _compose_summary(lang: str, data: dict, no_email: bool, orig_name: str | None = None) -> str:
     """Build the Greek summary block HR reads inside Workable."""
     lang_name = next((l["english_name"] for l in i18n.languages() if l["code"] == lang), lang)
     lines = [f"— Υποβλήθηκε μέσω intake app (γλώσσα υποψηφίου: {lang_name}) —"]
     if no_email:
         lines.append("⚠ Χωρίς email — επικοινωνία μέσω τηλεφώνου.")
+    if orig_name:
+        lines.append(f"Όνομα (πρωτότυπη γραφή): {orig_name}")
     lines.append("")
 
     for f in FIELDS:
@@ -133,6 +167,13 @@ def build_candidate(lang: str, data: dict) -> tuple[dict, dict]:
     """
     first = (data.get("first_name") or "").strip()
     last = (data.get("last_name") or "").strip()
+    # Romanize names so Workable's firstname/lastname are readable for Greek HR;
+    # keep the original script in the summary so nothing is lost.
+    first_latin = _to_latin(first, lang)
+    last_latin = _to_latin(last, lang)
+    romanized = (first_latin != first) or (last_latin != last)
+    orig_name = f"{first} {last}".strip() if romanized else None
+
     phone = _normalize_phone(data.get("phone") or "")
     email_raw = (data.get("email") or "").strip()
     no_email = not email_raw
@@ -148,17 +189,17 @@ def build_candidate(lang: str, data: dict) -> tuple[dict, dict]:
         tags.append("lang-unreviewed")
 
     candidate: dict = {
-        "firstname": first or "—",
-        "lastname": last or "—",
+        "firstname": first_latin or "—",
+        "lastname": last_latin or "—",
         "email": email,
         "phone": phone,
         "headline": f"{role_gr} — αίτηση (intake app)",
-        "summary": _compose_summary(lang, data, no_email),
+        "summary": _compose_summary(lang, data, no_email, orig_name),
         "tags": tags,
     }
     area = (data.get("area") or "").strip()
     if area:
-        candidate["address"] = area
+        candidate["address"] = _to_latin(area, lang)
     exp = _experience_entries(lang, data)
     if exp:
         candidate["experience_entries"] = exp

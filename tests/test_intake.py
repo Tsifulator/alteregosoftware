@@ -17,22 +17,60 @@ os.environ["DRY_RUN"] = "true"
 os.environ["TRANSLATE_FREETEXT"] = "false"
 
 import i18n                       # noqa: E402
+import llm                        # noqa: E402
 import workable_client as wc      # noqa: E402
 from fields import REQUIRED_KEYS  # noqa: E402
+
+
+@pytest.fixture(autouse=True)
+def _offline_llm(monkeypatch):
+    """Keep tests fast + deterministic: force the offline transliterator (unidecode)
+    by making the LLM unavailable, instead of hitting a local Ollama if one is up."""
+    def _boom(*_a, **_k):
+        raise RuntimeError("LLM disabled in tests")
+    monkeypatch.setattr(llm, "generate", _boom)
 
 
 # ── translations / i18n ──────────────────────────────────────────────────────
 
 def test_all_shipped_languages_load():
     codes = set(i18n.available_codes())
-    assert {"el", "en", "ar", "ka", "tl"} <= codes
-    assert len(codes) >= 15
+    # baseline + a spread of the labour-pool languages, incl. the newer batch
+    assert {"el", "en", "ar", "ka", "tl", "am", "ta", "si", "pa", "ne", "tr", "fr", "ps"} <= codes
+    assert len(codes) >= 23
 
 
 def test_rtl_flagged_for_arabic_urdu_farsi():
-    for c in ("ar", "ur", "fa"):
+    for c in ("ar", "ur", "fa", "ps"):
         assert i18n.is_rtl(c), f"{c} should be RTL"
     assert not i18n.is_rtl("el")
+
+
+# ── name romanization (Greek HR needs readable Latin/Greek names) ────────────
+
+def test_non_latin_name_romanized_to_ascii_and_original_preserved():
+    # Cyrillic name from a Russian-speaking applicant -> Latin in Workable fields,
+    # original script kept in the Greek summary. (LLM is offline here -> unidecode.)
+    data = {"first_name": "Мария", "last_name": "Иванова", "phone": "6971234567",
+            "desired_role": "cleaner"}
+    cand, _ = wc.build_candidate("ru", data)
+    assert cand["firstname"].isascii() and cand["firstname"] != "Мария"
+    assert cand["lastname"].isascii()
+    assert "Мария Иванова" in cand["summary"]      # original preserved
+
+
+def test_greek_names_left_in_greek():
+    data = {"first_name": "Μαρία", "last_name": "Παπά", "phone": "6971234567",
+            "desired_role": "helper"}
+    cand, _ = wc.build_candidate("el", data)
+    assert cand["firstname"] == "Μαρία"            # Greek HR reads Greek — untouched
+
+
+def test_latin_names_passed_through_unchanged():
+    data = {"first_name": "Besnik", "last_name": "Hoxha", "phone": "6971234567",
+            "desired_role": "cleaner"}
+    cand, _ = wc.build_candidate("sq", data)
+    assert cand["firstname"] == "Besnik" and cand["lastname"] == "Hoxha"
 
 
 def test_unknown_language_falls_back_to_english():

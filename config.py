@@ -65,6 +65,12 @@ DRY_RUN = os.getenv("DRY_RUN", "false").lower() == "true"
 # translated to Greek so HR can read them. Uses the local-first LLM backend below.
 TRANSLATE_FREETEXT = os.getenv("TRANSLATE_FREETEXT", "true").lower() == "true"
 
+# Romanize non-Latin names (Arabic, Cyrillic, Georgian, Devanagari, …) to the
+# Latin alphabet so the Workable firstname/lastname are readable/searchable by
+# Greek HR. The original script is preserved in the summary. Greek-speaker names
+# are kept in Greek. Uses the LLM when available, else an offline transliterator.
+TRANSLITERATE_NAMES = os.getenv("TRANSLITERATE_NAMES", "true").lower() == "true"
+
 # --- LLM backend (hybrid, free-first) — same scheme as the sibling repos ---
 # "auto": Ollama if reachable, else Groq (free), else Gemini, else Claude.
 LLM_BACKEND = os.getenv("LLM_BACKEND", "auto").lower()

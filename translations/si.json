@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "සිංහල", "english_name": "Sinhala", "dir": "ltr", "flag": "🇱🇰", "needs_review": true},
+  "ui": {
+    "pick_language_title": "ආයුබෝවන්",
+    "pick_language_sub": "කරුණාකර ඔබේ භාෂාව තෝරන්න",
+    "form_title": "රැකියා අයදුම්පත",
+    "form_sub": "කරුණාකර පහත ඔබේ විස්තර පුරවන්න",
+    "required_hint": "* සලකුණු කළ ක්ෂේත්‍ර අනිවාර්යයි",
+    "submit": "යොමු කරන්න",
+    "submitting": "යවමින්…",
+    "back": "ආපසු",
+    "change_language": "භාෂාව වෙනස් කරන්න",
+    "start_over": "නව අයදුම්පත",
+    "select_placeholder": "— තෝරන්න —",
+    "consent": "යොමු කිරීමෙන්, ඔබේ විස්තර බඳවා ගැනීමේ අරමුණු සඳහා ALTER EGO හි බඳවා ගැනීමේ පද්ධතියට (Workable) යවනු ලැබේ.",
+    "error_required": "කරුණාකර අනිවාර්ය ක්ෂේත්‍ර සියල්ල පුරවන්න.",
+    "thanks_title": "ස්තූතියි!",
+    "thanks_body": "ඔබේ අයදුම්පත ලැබුණි. අපගේ කණ්ඩායම ඔබව සම්බන්ධ කරගනු ඇත.",
+    "admin_title": "අයදුම්පත්",
+    "admin_retry": "අසාර්ථක නැවත උත්සාහ කරන්න",
+    "admin_pending": "නැවත උත්සාහ කිරීම සඳහා රැඳී සිටී",
+    "admin_empty": "තවම අයදුම්පත් නැත."
+  },
+  "labels": {
+    "first_name": "මුල් නම",
+    "last_name": "වාසගම",
+    "phone": "දුරකථන අංකය",
+    "email": "විද්‍යුත් තැපෑල (තිබේ නම්)",
+    "desired_role": "අවශ්‍ය තනතුර",
+    "area": "පදිංචි ප්‍රදේශය",
+    "greek_level": "ග්‍රීක භාෂා මට්ටම",
+    "other_languages": "ඔබ කතා කරන වෙනත් භාෂා",
+    "availability": "ලබා ගත හැකි බව",
+    "shifts": "කැමති වැඩ මුර",
+    "work_permit": "ග්‍රීසියේ වැඩ බලපත්‍රය",
+    "amka": "සමාජ සුරක්ෂණ අංකය (AMKA)",
+    "afm": "බදු අංකය (AFM)",
+    "experience": "පෙර වැඩ පළපුරුද්ද",
+    "notes": "අප දැනගත යුතු වෙනත් යමක්"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "පිරිසිදු කරන්නා",
+      "helper": "සාමාන්‍ය සහායක",
+      "supervisor": "අධීක්ෂක / කණ්ඩායම් නායක",
+      "driver": "රියදුරු",
+      "security": "ආරක්ෂාව",
+      "kitchen": "කුස්සිය / ආහාර සැපයුම",
+      "gardening": "උද්‍යාන / හරිත අවකාශ",
+      "other": "වෙනත්"
+    },
+    "greek_level": {"none": "කිසිවක් නැත", "basic": "ටිකක්", "good": "හොඳයි", "fluent": "චතුර"},
+    "availability": {"immediate": "වහාම ආරම්භ කළ හැක", "full_time": "පූර්ණ කාලීන", "part_time": "අර්ධ කාලීන", "flexible": "නම්‍යශීලී"},
+    "shifts": {"morning": "උදෑසන", "afternoon": "දහවල්", "night": "රාත්‍රී", "weekends": "සති අන්ත"},
+    "work_permit": {"yes": "ඔව්", "no": "නැත", "in_process": "ක්‍රියාවලියේ"}
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Français", "english_name": "French", "dir": "ltr", "flag": "🇫🇷", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Bienvenue",
+    "pick_language_sub": "Veuillez choisir votre langue",
+    "form_title": "Demande d'emploi",
+    "form_sub": "Veuillez remplir vos informations ci-dessous",
+    "required_hint": "Les champs marqués d'un * sont obligatoires",
+    "submit": "Envoyer",
+    "submitting": "Envoi…",
+    "back": "Retour",
+    "change_language": "Changer de langue",
+    "start_over": "Nouvelle demande",
+    "select_placeholder": "— choisir —",
+    "consent": "En envoyant, vos informations sont transmises au système de recrutement d'ALTER EGO (Workable) à des fins de recrutement.",
+    "error_required": "Veuillez remplir tous les champs obligatoires.",
+    "thanks_title": "Merci !",
+    "thanks_body": "Votre demande a été reçue. Notre équipe vous contactera.",
+    "admin_title": "Demandes",
+    "admin_retry": "Réessayer les échecs",
+    "admin_pending": "En attente de nouvelle tentative",
+    "admin_empty": "Aucune demande pour le moment."
+  },
+  "labels": {
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "phone": "Numéro de téléphone",
+    "email": "E-mail (si vous en avez)",
+    "desired_role": "Poste souhaité",
+    "area": "Quartier de résidence",
+    "greek_level": "Niveau de grec",
+    "other_languages": "Autres langues parlées",
+    "availability": "Disponibilité",
+    "shifts": "Horaires préférés",
+    "work_permit": "Permis de travail en Grèce",
+    "amka": "N° de sécurité sociale (AMKA)",
+    "afm": "N° fiscal (AFM)",
+    "experience": "Expérience professionnelle antérieure",
+    "notes": "Autre chose que nous devrions savoir"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Agent d'entretien",
+      "helper": "Aide générale",
+      "supervisor": "Superviseur / chef d'équipe",
+      "driver": "Chauffeur",
+      "security": "Sécurité",
+      "kitchen": "Cuisine / restauration",
+      "gardening": "Jardinage / espaces verts",
+      "other": "Autre"
+    },
+    "greek_level": {"none": "Aucun", "basic": "Un peu", "good": "Bon", "fluent": "Courant"},
+    "availability": {"immediate": "Peut commencer immédiatement", "full_time": "Temps plein", "part_time": "Temps partiel", "flexible": "Flexible"},
+    "shifts": {"morning": "Matin", "afternoon": "Après-midi", "night": "Nuit", "weekends": "Week-ends"},
+    "work_permit": {"yes": "Oui", "no": "Non", "in_process": "En cours"}
+  }
+}

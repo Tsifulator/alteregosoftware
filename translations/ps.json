@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "پښتو", "english_name": "Pashto", "dir": "rtl", "flag": "🇦🇫", "needs_review": true},
+  "ui": {
+    "pick_language_title": "ښه راغلاست",
+    "pick_language_sub": "مهرباني وکړئ خپله ژبه وټاکئ",
+    "form_title": "د دندې غوښتنلیک",
+    "form_sub": "مهرباني وکړئ لاندې خپل معلومات ډک کړئ",
+    "required_hint": "د * نښه لرونکي ځایونه اړین دي",
+    "submit": "وسپارئ",
+    "submitting": "لیږل کیږي…",
+    "back": "شاته",
+    "change_language": "ژبه بدله کړئ",
+    "start_over": "نوی غوښتنلیک",
+    "select_placeholder": "— وټاکئ —",
+    "consent": "د سپارلو سره ستاسو معلومات د استخدام موخو لپاره د ALTER EGO استخدام سیسټم (Workable) ته لیږل کیږي.",
+    "error_required": "مهرباني وکړئ ټول اړین ځایونه ډک کړئ.",
+    "thanks_title": "مننه!",
+    "thanks_body": "ستاسو غوښتنلیک ترلاسه شو. زموږ ټیم به له تاسو سره اړیکه ونیسي.",
+    "admin_title": "غوښتنلیکونه",
+    "admin_retry": "ناکام بیا هڅه وکړئ",
+    "admin_pending": "د بیا هڅې په تمه",
+    "admin_empty": "تر اوسه هیڅ غوښتنلیک نشته."
+  },
+  "labels": {
+    "first_name": "نوم",
+    "last_name": "تخلص",
+    "phone": "د تلیفون شمیره",
+    "email": "بریښنالیک (که ولرئ)",
+    "desired_role": "غوښتل شوې دنده",
+    "area": "د اوسیدو سیمه",
+    "greek_level": "د یوناني ژبې کچه",
+    "other_languages": "نورې ژبې چې تاسو یې وایاست",
+    "availability": "شتون",
+    "shifts": "غوره شیفټونه",
+    "work_permit": "په یونان کې د کار اجازه",
+    "amka": "د ټولنیز خوندیتوب شمیره (AMKA)",
+    "afm": "د مالیې شمیره (AFM)",
+    "experience": "پخوانۍ کاري تجربه",
+    "notes": "بل هر څه چې موږ یې باید پوه شو"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "پاکوونکی",
+      "helper": "عمومي مرستندوی",
+      "supervisor": "څارونکی / د ډلې مشر",
+      "driver": "ډرایور",
+      "security": "امنیت",
+      "kitchen": "پخلنځی / خواړه",
+      "gardening": "باغوانی / شنه ساحه",
+      "other": "نور"
+    },
+    "greek_level": {"none": "هیڅ", "basic": "لږ", "good": "ښه", "fluent": "روان"},
+    "availability": {"immediate": "سمدلاسه پیل کولی شم", "full_time": "بشپړ وخت", "part_time": "نیمه وخت", "flexible": "انعطاف منونکی"},
+    "shifts": {"morning": "سهار", "afternoon": "ماسپښین", "night": "شپه", "weekends": "د اونۍ پایونه"},
+    "work_permit": {"yes": "هو", "no": "نه", "in_process": "په جریان کې"}
+  }
+}

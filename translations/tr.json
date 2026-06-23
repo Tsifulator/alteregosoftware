@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Türkçe", "english_name": "Turkish", "dir": "ltr", "flag": "🇹🇷", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Hoş geldiniz",
+    "pick_language_sub": "Lütfen dilinizi seçin",
+    "form_title": "İş başvurusu",
+    "form_sub": "Lütfen bilgilerinizi aşağıya girin",
+    "required_hint": "* işaretli alanlar zorunludur",
+    "submit": "Gönder",
+    "submitting": "Gönderiliyor…",
+    "back": "Geri",
+    "change_language": "Dili değiştir",
+    "start_over": "Yeni başvuru",
+    "select_placeholder": "— seçin —",
+    "consent": "Gönderdiğinizde, bilgileriniz işe alım amacıyla ALTER EGO'nun işe alım sistemine (Workable) gönderilir.",
+    "error_required": "Lütfen tüm zorunlu alanları doldurun.",
+    "thanks_title": "Teşekkürler!",
+    "thanks_body": "Başvurunuz alındı. Ekibimiz sizinle iletişime geçecek.",
+    "admin_title": "Başvurular",
+    "admin_retry": "Başarısız olanları yeniden dene",
+    "admin_pending": "Yeniden deneme bekliyor",
+    "admin_empty": "Henüz başvuru yok."
+  },
+  "labels": {
+    "first_name": "Ad",
+    "last_name": "Soyad",
+    "phone": "Telefon numarası",
+    "email": "E-posta (varsa)",
+    "desired_role": "İstediğiniz pozisyon",
+    "area": "Oturduğunuz bölge",
+    "greek_level": "Yunanca seviyesi",
+    "other_languages": "Konuştuğunuz diğer diller",
+    "availability": "Müsaitlik",
+    "shifts": "Tercih edilen vardiyalar",
+    "work_permit": "Yunanistan'da çalışma izni",
+    "amka": "Sosyal güvenlik no. (AMKA)",
+    "afm": "Vergi no. (AFM)",
+    "experience": "Önceki iş deneyimi",
+    "notes": "Bilmemiz gereken başka bir şey"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Temizlikçi",
+      "helper": "Genel yardımcı",
+      "supervisor": "Süpervizör / ekip lideri",
+      "driver": "Şoför",
+      "security": "Güvenlik",
+      "kitchen": "Mutfak / ikram",
+      "gardening": "Bahçıvanlık / çevre düzeni",
+      "other": "Diğer"
+    },
+    "greek_level": {"none": "Hiç", "basic": "Biraz", "good": "İyi", "fluent": "Akıcı"},
+    "availability": {"immediate": "Hemen başlayabilirim", "full_time": "Tam zamanlı", "part_time": "Yarı zamanlı", "flexible": "Esnek"},
+    "shifts": {"morning": "Sabah", "afternoon": "Öğleden sonra", "night": "Gece", "weekends": "Hafta sonları"},
+    "work_permit": {"yes": "Evet", "no": "Hayır", "in_process": "İşlemde"}
+  }
+}

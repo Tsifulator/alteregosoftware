@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "ਪੰਜਾਬੀ", "english_name": "Punjabi", "dir": "ltr", "flag": "🇮🇳", "needs_review": true},
+  "ui": {
+    "pick_language_title": "ਜੀ ਆਇਆਂ ਨੂੰ",
+    "pick_language_sub": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ",
+    "form_title": "ਨੌਕਰੀ ਦੀ ਅਰਜ਼ੀ",
+    "form_sub": "ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਆਪਣੀ ਜਾਣਕਾਰੀ ਭਰੋ",
+    "required_hint": "* ਵਾਲੇ ਖਾਨੇ ਲਾਜ਼ਮੀ ਹਨ",
+    "submit": "ਭੇਜੋ",
+    "submitting": "ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…",
+    "back": "ਪਿੱਛੇ",
+    "change_language": "ਭਾਸ਼ਾ ਬਦਲੋ",
+    "start_over": "ਨਵੀਂ ਅਰਜ਼ੀ",
+    "select_placeholder": "— ਚੁਣੋ —",
+    "consent": "ਭੇਜਣ 'ਤੇ, ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਭਰਤੀ ਦੇ ਉਦੇਸ਼ ਲਈ ALTER EGO ਦੇ ਭਰਤੀ ਸਿਸਟਮ (Workable) ਨੂੰ ਭੇਜੀ ਜਾਂਦੀ ਹੈ।",
+    "error_required": "ਕਿਰਪਾ ਕਰਕੇ ਸਾਰੇ ਲਾਜ਼ਮੀ ਖਾਨੇ ਭਰੋ।",
+    "thanks_title": "ਧੰਨਵਾਦ!",
+    "thanks_body": "ਤੁਹਾਡੀ ਅਰਜ਼ੀ ਮਿਲ ਗਈ ਹੈ। ਸਾਡੀ ਟੀਮ ਤੁਹਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੇਗੀ।",
+    "admin_title": "ਅਰਜ਼ੀਆਂ",
+    "admin_retry": "ਅਸਫਲ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+    "admin_pending": "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਦੀ ਉਡੀਕ ਵਿੱਚ",
+    "admin_empty": "ਹਾਲੇ ਕੋਈ ਅਰਜ਼ੀ ਨਹੀਂ।"
+  },
+  "labels": {
+    "first_name": "ਨਾਮ",
+    "last_name": "ਗੋਤ",
+    "phone": "ਫ਼ੋਨ ਨੰਬਰ",
+    "email": "ਈਮੇਲ (ਜੇ ਹੋਵੇ)",
+    "desired_role": "ਲੋੜੀਂਦੀ ਅਸਾਮੀ",
+    "area": "ਰਿਹਾਇਸ਼ੀ ਇਲਾਕਾ",
+    "greek_level": "ਯੂਨਾਨੀ ਭਾਸ਼ਾ ਦਾ ਪੱਧਰ",
+    "other_languages": "ਹੋਰ ਭਾਸ਼ਾਵਾਂ ਜੋ ਤੁਸੀਂ ਬੋਲਦੇ ਹੋ",
+    "availability": "ਉਪਲਬਧਤਾ",
+    "shifts": "ਪਸੰਦੀਦਾ ਸ਼ਿਫਟਾਂ",
+    "work_permit": "ਯੂਨਾਨ ਵਿੱਚ ਕੰਮ ਦੀ ਇਜਾਜ਼ਤ",
+    "amka": "ਸਮਾਜਿਕ ਸੁਰੱਖਿਆ ਨੰਬਰ (AMKA)",
+    "afm": "ਟੈਕਸ ਨੰਬਰ (AFM)",
+    "experience": "ਪਿਛਲਾ ਕੰਮ ਦਾ ਤਜਰਬਾ",
+    "notes": "ਹੋਰ ਕੁਝ ਜੋ ਸਾਨੂੰ ਪਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "ਸਫ਼ਾਈ ਕਰਮਚਾਰੀ",
+      "helper": "ਆਮ ਸਹਾਇਕ",
+      "supervisor": "ਸੁਪਰਵਾਈਜ਼ਰ / ਟੀਮ ਲੀਡਰ",
+      "driver": "ਡਰਾਈਵਰ",
+      "security": "ਸੁਰੱਖਿਆ",
+      "kitchen": "ਰਸੋਈ / ਕੇਟਰਿੰਗ",
+      "gardening": "ਬਾਗਬਾਨੀ / ਹਰਿਆਲੀ",
+      "other": "ਹੋਰ"
+    },
+    "greek_level": {"none": "ਬਿਲਕੁਲ ਨਹੀਂ", "basic": "ਥੋੜ੍ਹੀ", "good": "ਚੰਗੀ", "fluent": "ਰਵਾਂ"},
+    "availability": {"immediate": "ਤੁਰੰਤ ਸ਼ੁਰੂ ਕਰ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ", "full_time": "ਪੂਰਾ ਸਮਾਂ", "part_time": "ਅੱਧਾ ਸਮਾਂ", "flexible": "ਲਚਕਦਾਰ"},
+    "shifts": {"morning": "ਸਵੇਰ", "afternoon": "ਦੁਪਹਿਰ", "night": "ਰਾਤ", "weekends": "ਹਫ਼ਤੇ ਦੇ ਅੰਤ"},
+    "work_permit": {"yes": "ਹਾਂ", "no": "ਨਹੀਂ", "in_process": "ਪ੍ਰਕਿਰਿਆ ਵਿੱਚ"}
+  }
+}

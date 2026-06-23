@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "नेपाली", "english_name": "Nepali", "dir": "ltr", "flag": "🇳🇵", "needs_review": true},
+  "ui": {
+    "pick_language_title": "स्वागत छ",
+    "pick_language_sub": "कृपया आफ्नो भाषा छान्नुहोस्",
+    "form_title": "रोजगारी आवेदन",
+    "form_sub": "कृपया तल आफ्नो विवरण भर्नुहोस्",
+    "required_hint": "* चिन्ह भएका फाँटहरू अनिवार्य छन्",
+    "submit": "पेस गर्नुहोस्",
+    "submitting": "पठाउँदै…",
+    "back": "पछाडि",
+    "change_language": "भाषा परिवर्तन गर्नुहोस्",
+    "start_over": "नयाँ आवेदन",
+    "select_placeholder": "— छान्नुहोस् —",
+    "consent": "पेस गर्दा, तपाईंको विवरण रोजगारीको उद्देश्यका लागि ALTER EGO को भर्ती प्रणाली (Workable) मा पठाइन्छ।",
+    "error_required": "कृपया सबै अनिवार्य फाँटहरू भर्नुहोस्।",
+    "thanks_title": "धन्यवाद!",
+    "thanks_body": "तपाईंको आवेदन प्राप्त भयो। हाम्रो टोलीले तपाईंलाई सम्पर्क गर्नेछ।",
+    "admin_title": "आवेदनहरू",
+    "admin_retry": "असफललाई पुनः प्रयास गर्नुहोस्",
+    "admin_pending": "पुनः प्रयासको प्रतीक्षामा",
+    "admin_empty": "अहिलेसम्म कुनै आवेदन छैन।"
+  },
+  "labels": {
+    "first_name": "नाम",
+    "last_name": "थर",
+    "phone": "फोन नम्बर",
+    "email": "इमेल (भए)",
+    "desired_role": "चाहिएको पद",
+    "area": "बसोबास क्षेत्र",
+    "greek_level": "ग्रीक भाषा स्तर",
+    "other_languages": "तपाईंले बोल्ने अन्य भाषाहरू",
+    "availability": "उपलब्धता",
+    "shifts": "रुचाइएको पाली",
+    "work_permit": "ग्रीसमा काम गर्ने अनुमति",
+    "amka": "सामाजिक सुरक्षा नम्बर (AMKA)",
+    "afm": "कर नम्बर (AFM)",
+    "experience": "अघिल्लो काम अनुभव",
+    "notes": "हामीले थाहा पाउनुपर्ने अरू केही"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "सरसफाइकर्मी",
+      "helper": "सामान्य सहयोगी",
+      "supervisor": "सुपरभाइजर / टोली नेता",
+      "driver": "चालक",
+      "security": "सुरक्षा",
+      "kitchen": "भान्सा / क्याटरिङ",
+      "gardening": "बगैंचा / हरियाली",
+      "other": "अन्य"
+    },
+    "greek_level": {"none": "केही पनि छैन", "basic": "थोरै", "good": "राम्रो", "fluent": "धाराप्रवाह"},
+    "availability": {"immediate": "तुरुन्तै सुरु गर्न सक्छु", "full_time": "पूर्ण समय", "part_time": "आंशिक समय", "flexible": "लचिलो"},
+    "shifts": {"morning": "बिहान", "afternoon": "दिउँसो", "night": "राति", "weekends": "सप्ताहन्त"},
+    "work_permit": {"yes": "छ", "no": "छैन", "in_process": "प्रक्रियामा"}
+  }
+}

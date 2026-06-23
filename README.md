@@ -24,13 +24,16 @@ and error-prone. This app lets them self-serve in **their own language** and lan
 clean, structured candidate in Workable instantly. Everything the candidate enters is
 also summarized **in Greek** so HR reads one consistent record regardless of language.
 
-## Languages (15)
+## Languages (23)
 
 Greek 🇬🇷 · English 🇬🇧 · Albanian 🇦🇱 · Arabic 🇸🇦 · Urdu 🇵🇰 · Bengali 🇧🇩 ·
 Russian 🇷🇺 · Bulgarian 🇧🇬 · Georgian 🇬🇪 · Romanian 🇷🇴 · Ukrainian 🇺🇦 ·
-Tagalog 🇵🇭 · Hindi 🇮🇳 · Farsi/Dari 🇮🇷 · Polish 🇵🇱
+Tagalog 🇵🇭 · Hindi 🇮🇳 · Farsi/Dari 🇮🇷 · Polish 🇵🇱 · Turkish 🇹🇷 · French 🇫🇷 ·
+Punjabi 🇮🇳 · Nepali 🇳🇵 · Tamil 🇱🇰 · Sinhala 🇱🇰 · Amharic 🇪🇹 · Pashto 🇦🇫
 
-Arabic / Urdu / Farsi render right-to-left automatically. Each language is one file
+Chosen to match the labour pools that actually staff frontline/cleaning roles in
+Greece. Arabic / Urdu / Farsi / Pashto render right-to-left automatically. Each
+language is one file
 in [`translations/`](translations) — add or edit one to change a language; no code
 change. **Greek & English are hand-authored; the rest are machine translations
 flagged `needs_review` — have a native speaker check them before full rollout.**
