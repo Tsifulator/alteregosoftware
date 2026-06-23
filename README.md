@@ -105,6 +105,10 @@ log, hiring approval — live in Workable, not the candidate form.)
   synthesized from the phone and the record is tagged **`no-email`** — HR calls instead.
 - Non-Latin **names/places are romanized** to Latin (LLM-first, offline fallback) so
   Greek HR can read them; the original script is kept in the summary.
+- **Signature** → the candidate's drawn signature is wrapped into a one-page signed-consent
+  **PDF** and attached as the Workable `resume` (the only file type the API accepts; the slot
+  is free since there's no CV). Also stored locally as `signatures/<id>.png` and viewable from
+  `/admin`. Toggle with `ATTACH_SIGNATURE_PDF`.
 
 ## Never loses a candidate
 

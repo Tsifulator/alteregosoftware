@@ -28,8 +28,12 @@ from config import (
     ORG_NAME,
     workable_configured,
 )
+from datetime import datetime
+
+import signed_pdf
 from fields import (FIELDS, REQUIRED_KEYS, BY_KEY, SECTIONS, fields_in,
                     EXPERIENCE_ROWS, EXPERIENCE_COLS)
+from config import ATTACH_SIGNATURE_PDF
 from workable_client import build_candidate, post_candidate
 
 BASE = Path(__file__).resolve().parent
@@ -114,8 +118,21 @@ async def submit(request: Request):
     record = store.record_submission(lang, data, candidate)
     store.save_signature(record["id"], signature)
 
+    # Attach the signature to Workable as a signed-consent PDF (the resume slot is
+    # free here — candidates have no CV). Posted on a copy so submissions.json stays
+    # lean. Best-effort: a PDF failure never blocks the submission.
+    post_obj = candidate
+    if ATTACH_SIGNATURE_PDF:
+        png = signed_pdf.decode_data_url(signature)
+        pdf_b64 = signed_pdf.build_pdf_b64(
+            f"{candidate['firstname']} {candidate['lastname']}".strip(),
+            datetime.now().strftime("%d/%m/%Y"), png) if png else None
+        if pdf_b64:
+            post_obj = {**candidate, "resume": {"name": f"alterego-signature-{record['id']}.pdf",
+                                                "data": pdf_b64}}
+
     # 2) Try Workable. 3) Never show the candidate an error — queue on failure.
-    ok, workable_id, err = post_candidate(candidate)
+    ok, workable_id, err = post_candidate(post_obj)
     if ok:
         store.mark_submitted(record["id"], workable_id, dry_run=DRY_RUN)
     else:

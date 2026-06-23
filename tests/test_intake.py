@@ -230,3 +230,22 @@ def test_signed_flag_noted_in_summary():
         "first_name": "Μαρία", "last_name": "Παπά", "mobile": "6971234567",
         "desired_role": "cleaner", "signed": True})
     assert "Υπογραφή: ✔" in cand["summary"]
+
+
+# ── signed-consent PDF (attached to Workable as resume) ──────────────────────
+
+def test_signature_pdf_built_from_png():
+    import signed_pdf
+    png = signed_pdf.decode_data_url(_PNG)
+    assert png and png[:8] == b"\x89PNG\r\n\x1a\n"
+    pdf = signed_pdf.build_pdf("Maria Ivanova", "23/06/2026", png)
+    assert pdf and pdf[:5] == b"%PDF-"          # valid PDF
+    # non-Latin name must not crash the core-font PDF (gets romanized/sanitized)
+    assert signed_pdf.build_pdf_b64("Μαρία Παπά", "23/06/2026", png)
+
+
+def test_decode_data_url_rejects_junk():
+    import signed_pdf
+    assert signed_pdf.decode_data_url("nope") is None
+    assert signed_pdf.decode_data_url("") is None
+    assert signed_pdf.build_pdf("x", "y", None) is None

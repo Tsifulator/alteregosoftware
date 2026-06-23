@@ -64,6 +64,10 @@ DEFAULT_PHONE_CC = os.getenv("DEFAULT_PHONE_CC", "+30")
 # If true, never call Workable — write the would-be payload to logs/ instead.
 DRY_RUN = os.getenv("DRY_RUN", "false").lower() == "true"
 
+# Attach the candidate's signature to Workable as a signed-consent PDF in the
+# `resume` slot (PDF is the only file type the create-candidate API accepts).
+ATTACH_SIGNATURE_PDF = os.getenv("ATTACH_SIGNATURE_PDF", "true").lower() == "true"
+
 # --- Optional free-text translation (best-effort; never blocks a submission) ---
 # When true, free-text fields written in the candidate's language are also
 # translated to Greek so HR can read them. Uses the local-first LLM backend below.
