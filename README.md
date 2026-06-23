@@ -73,21 +73,38 @@ The thank-you screen auto-resets to the language picker for the next person
 [`railway.json`](railway.json) starts `uvicorn app:app`. Set the env vars, and point
 `SUBMISSIONS_PATH` / `QUEUE_PATH` at a mounted volume so data survives redeploys.
 
+## Form structure
+
+Mirrors ALTER EGO's paper application («ΑΙΤΗΣΗ ΕΡΓΑΣΙΑΣ ΥΠΟΨΗΦΙΟΥ ΕΡΓΑΖΟΜΕΝΟΥ»),
+candidate-facing sections only:
+
+1. **Ατομικά στοιχεία** — name, ΑΜΚΑ, address (street/no./area/city/postal), mobile + home
+   phone, year & place of birth, nationality, email.
+2. **Εκπαίδευση** — education level, school, languages, Greek level, computer use,
+   driving licence, car owner.
+3. **Προϋπηρεσία** — a table of past jobs (company · position · period · reason for leaving).
+4. **Υπόλοιπα στοιχεία** — position wanted, preferred schedule, referred by + profession,
+   how they found us.
+
+Ends with the GDPR «Έλαβα γνώση» consent checkbox. (HR-only sections — evaluation, contact
+log, hiring approval — live in Workable, not the candidate form.)
+
 ## How a submission maps to Workable
 
 `POST https://{subdomain}.workable.com/spi/v3/jobs/{shortcode}/candidates`
 
 | Form field | Workable |
 |---|---|
-| first/last name, phone, email, area | `firstname` / `lastname` / `phone` / `email` / `address` |
-| desired role | `headline` (+ tag `role:…`) |
-| previous experience | `experience_entries[]` (with Greek translation) |
-| everything else (Greek level, availability, shifts, permit, AMKA/AFM, notes) | composed into `summary`, in Greek |
+| first/last name, mobile, email | `firstname` / `lastname` / `phone` / `email` |
+| street + no. + area + city + postal | composed `address` (romanized) |
+| position wanted | `headline` (+ tag `role:…`) |
+| Προϋπηρεσία rows | `experience_entries[]` (company / title / period + reason) |
+| everything else (ΑΜΚΑ, birth, nationality, education, Greek level, schedule, …) | composed into `summary`, in Greek |
 
 - **No email?** Workable requires one, so a non-deliverable placeholder is
   synthesized from the phone and the record is tagged **`no-email`** — HR calls instead.
-- Free-text answers are translated to Greek (best-effort, local Ollama) so HR reads
-  one language. Translation never blocks a submission.
+- Non-Latin **names/places are romanized** to Latin (LLM-first, offline fallback) so
+  Greek HR can read them; the original script is kept in the summary.
 
 ## Never loses a candidate
 

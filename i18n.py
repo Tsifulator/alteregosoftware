@@ -119,3 +119,13 @@ def label(lang: str, field_key: str) -> str:
 def option_label(lang: str, field_key: str, option_key: str) -> str:
     """The label for one select option."""
     return _lookup(safe_lang(lang), "options", field_key, option_key) or option_key.replace("_", " ").title()
+
+
+def section_title(lang: str, section_key: str) -> str:
+    """The heading for a form section (personal/education/experience/other)."""
+    return _lookup(safe_lang(lang), "sections", section_key) or section_key.title()
+
+
+def exp_label(lang: str, col_key: str) -> str:
+    """A column header in the previous-experience table."""
+    return _lookup(safe_lang(lang), "exp", col_key) or col_key.title()

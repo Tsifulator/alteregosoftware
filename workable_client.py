@@ -27,7 +27,6 @@ from config import (
     DRY_RUN,
     LOGS_DIR,
     PLACEHOLDER_EMAIL_DOMAIN,
-    TRANSLATE_FREETEXT,
     TRANSLITERATE_NAMES,
     WORKABLE_API_TOKEN,
     WORKABLE_INTAKE_JOB,
@@ -56,20 +55,6 @@ def _synth_email(phone: str) -> str:
     """A guaranteed-ASCII, non-deliverable placeholder so Workable accepts the record."""
     digits = re.sub(r"\D", "", phone) or "unknown"
     return f"candidate.{digits}@{PLACEHOLDER_EMAIL_DOMAIN}"
-
-
-def format_interview(raw) -> str:
-    """Format a datetime-local value ('2026-06-28T14:00') as 'dd/mm HH:MM' for HR.
-
-    Returns '' for blank/unparseable input — never raises.
-    """
-    raw = (raw or "").strip()
-    if not raw:
-        return ""
-    try:
-        return datetime.fromisoformat(raw).strftime("%d/%m %H:%M")
-    except (ValueError, TypeError):
-        return raw
 
 
 def _to_latin(text: str, lang: str) -> str:
@@ -103,30 +88,26 @@ def _to_latin(text: str, lang: str) -> str:
     return text   # original script beats nothing
 
 
-def _translate_to_greek(text: str) -> str | None:
-    """Best-effort translation to Greek. Returns None on any problem — never raises."""
-    if not TRANSLATE_FREETEXT or not text.strip():
-        return None
-    try:
-        from llm import generate
-        out = generate(
-            "Translate the following text to Greek. "
-            "Output ONLY the Greek translation, no notes, no quotes.\n\n" + text
-        ).strip()
-        return out or None
-    except Exception as e:                # backend down, no key, timeout — degrade gracefully
-        print(f"  ⚠ translation skipped: {e}")
-        return None
-
-
-def _value_in_greek(key: str, raw, kind: str) -> str:
+def _display_value(lang: str, f: dict, raw) -> str:
     """Render a field's submitted value as Greek text for the HR-facing summary."""
+    kind = f["kind"]
     if kind == "multiselect":
         vals = raw if isinstance(raw, list) else [raw]
-        return ", ".join(i18n.option_label("el", key, v) for v in vals if v)
+        return ", ".join(i18n.option_label("el", f["key"], v) for v in vals if v)
     if kind == "select":
-        return i18n.option_label("el", key, raw)
-    return str(raw).strip()
+        return i18n.option_label("el", f["key"], raw)
+    val = str(raw).strip()
+    return _to_latin(val, lang) if f.get("romanize") else val
+
+
+def _compose_address(lang: str, data: dict) -> str:
+    """Compose the Workable address from the street/number/area/city/postal fields."""
+    street = " ".join(p for p in [(data.get("address") or "").strip(),
+                                   (data.get("address_number") or "").strip()] if p)
+    parts = [street, (data.get("area") or "").strip(),
+             (data.get("city") or "").strip(), (data.get("postal_code") or "").strip()]
+    composed = ", ".join(p for p in parts if p)
+    return _to_latin(composed, lang)
 
 
 def _compose_summary(lang: str, data: dict, no_email: bool, orig_name: str | None = None) -> str:
@@ -137,42 +118,39 @@ def _compose_summary(lang: str, data: dict, no_email: bool, orig_name: str | Non
         lines.append("⚠ Χωρίς email — επικοινωνία μέσω τηλεφώνου.")
     if orig_name:
         lines.append(f"Όνομα (πρωτότυπη γραφή): {orig_name}")
-    interview = format_interview(data.get("interview_at"))
-    if interview:
-        lines.append(f"Συνέντευξη: {interview}")
     lines.append("")
 
     for f in FIELDS:
         if f["target"] != "summary":
             continue
-        key = f["key"]
-        raw = data.get(key)
+        raw = data.get(f["key"])
         if raw in (None, "", []):
             continue
-        gr_label = i18n.label("el", key)
-        if f.get("freetext"):
-            lines.append(f"{gr_label}:")
-            lines.append(str(raw).strip())
-            translated = None if lang == "el" else _translate_to_greek(str(raw))
-            if translated:
-                lines.append(f"[μετάφραση] {translated}")
-        else:
-            lines.append(f"{gr_label}: {_value_in_greek(key, raw, f['kind'])}")
+        lines.append(f"{i18n.label('el', f['key'])}: {_display_value(lang, f, raw)}")
     return "\n".join(lines).strip()
 
 
 def _experience_entries(lang: str, data: dict) -> list[dict]:
-    exp = (data.get("experience") or "").strip()
-    if not exp:
-        return []
-    body = exp
-    if lang != "el":
-        tr = _translate_to_greek(exp)
-        if tr:
-            body = f"{exp}\n\n[EL] {tr}"
-    role = data.get("desired_role") or ""
-    title = i18n.option_label("el", "desired_role", role) if role else "Προηγούμενη εμπειρία"
-    return [{"title": title or "Προηγούμενη εμπειρία", "summary": body}]
+    """Map the previous-experience rows to Workable experience_entries."""
+    entries = []
+    for row in data.get("experience_rows") or []:
+        company = _to_latin((row.get("company") or "").strip(), lang)
+        position = _to_latin((row.get("position") or "").strip(), lang)
+        period = (row.get("period") or "").strip()
+        reason = _to_latin((row.get("reason") or "").strip(), lang)
+        if not any([company, position, period, reason]):
+            continue
+        summary_bits = []
+        if period:
+            summary_bits.append(f"Διάστημα: {period}")
+        if reason:
+            summary_bits.append(f"Λόγος αποχώρησης: {reason}")
+        entries.append({
+            "title": position or "—",
+            "company": company or "—",
+            "summary": " · ".join(summary_bits),
+        })
+    return entries
 
 
 # ── public API ───────────────────────────────────────────────────────────────
@@ -191,7 +169,7 @@ def build_candidate(lang: str, data: dict) -> tuple[dict, dict]:
     romanized = (first_latin != first) or (last_latin != last)
     orig_name = f"{first} {last}".strip() if romanized else None
 
-    phone = _normalize_phone(data.get("phone") or "")
+    phone = _normalize_phone(data.get("mobile") or "")
     email_raw = (data.get("email") or "").strip()
     no_email = not email_raw
     email = email_raw or _synth_email(phone)
@@ -214,9 +192,9 @@ def build_candidate(lang: str, data: dict) -> tuple[dict, dict]:
         "summary": _compose_summary(lang, data, no_email, orig_name),
         "tags": tags,
     }
-    area = (data.get("area") or "").strip()
-    if area:
-        candidate["address"] = _to_latin(area, lang)
+    address = _compose_address(lang, data)
+    if address:
+        candidate["address"] = address
     exp = _experience_entries(lang, data)
     if exp:
         candidate["experience_entries"] = exp

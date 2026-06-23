@@ -13,49 +13,68 @@
 <form method="post" action="/submit" id="intake" novalidate>
   <input type="hidden" name="_lang" value="{{ lang }}">
 
-  {% for f in fields %}
-    <div class="field">
-      <label for="{{ f.key }}">
-        {{ label(f.key) }}{% if f.required %} <span class="req">*</span>{% endif %}
-      </label>
+  {% for section in sections %}
+    <fieldset class="section">
+      <legend>{{ section_title(section) }}</legend>
 
-      {% if f.kind in ['text', 'tel', 'email'] %}
-        <input id="{{ f.key }}" name="{{ f.key }}"
-               type="{{ 'tel' if f.kind=='tel' else ('email' if f.kind=='email' else 'text') }}"
-               {% if f.kind=='tel' %}inputmode="tel"{% endif %}
-               {% if f.required %}required{% endif %}
-               autocomplete="off">
-
-      {% elif f.kind == 'textarea' %}
-        <textarea id="{{ f.key }}" name="{{ f.key }}" rows="3"></textarea>
-
-      {% elif f.kind == 'datetime' %}
-        <input id="{{ f.key }}" name="{{ f.key }}" type="datetime-local"
-               {% if f.required %}required{% endif %}>
-
-      {% elif f.kind == 'select' %}
-        <select id="{{ f.key }}" name="{{ f.key }}" {% if f.required %}required{% endif %}>
-          <option value="" {% if f.required %}disabled{% endif %} selected>{{ t('select_placeholder') }}</option>
-          {% for opt in f.options %}
-            <option value="{{ opt }}">{{ option_label(lang, f.key, opt) }}</option>
-          {% endfor %}
-        </select>
-
-      {% elif f.kind == 'multiselect' %}
-        <div class="checks">
-          {% for opt in f.options %}
-            <label class="check">
-              <input type="checkbox" name="{{ f.key }}" value="{{ opt }}">
-              <span>{{ option_label(lang, f.key, opt) }}</span>
-            </label>
+      {% if section == 'experience' %}
+        <p class="hint">{{ t('exp_add_hint') }}</p>
+        <div class="exp-table">
+          <div class="exp-head">
+            {% for col in exp_cols %}<span>{{ exp_label(col) }}</span>{% endfor %}
+          </div>
+          {% for n in exp_rows %}
+            <div class="exp-row">
+              {% for col in exp_cols %}
+                <input name="exp_{{ n }}_{{ col }}" type="text"
+                       placeholder="{{ exp_label(col) }}" aria-label="{{ exp_label(col) }} {{ n }}">
+              {% endfor %}
+            </div>
           {% endfor %}
         </div>
+
+      {% else %}
+        {% for f in fields_in(section) %}
+          <div class="field {{ 'half' if f.kind in ['tel','email'] or f.key in ['address_number','area','city','postal_code','amka','birth_year','birth_place','nationality'] else '' }}">
+            <label for="{{ f.key }}">
+              {{ label(f.key) }}{% if f.required %} <span class="req">*</span>{% endif %}
+            </label>
+
+            {% if f.kind in ['text', 'tel', 'email'] %}
+              <input id="{{ f.key }}" name="{{ f.key }}"
+                     type="{{ 'tel' if f.kind=='tel' else ('email' if f.kind=='email' else 'text') }}"
+                     {% if f.kind=='tel' %}inputmode="tel"{% endif %}
+                     {% if f.required %}required{% endif %} autocomplete="off">
+
+            {% elif f.kind == 'select' %}
+              <select id="{{ f.key }}" name="{{ f.key }}" {% if f.required %}required{% endif %}>
+                <option value="" {% if f.required %}disabled{% endif %} selected>{{ t('select_placeholder') }}</option>
+                {% for opt in f.options %}
+                  <option value="{{ opt }}">{{ option_label(lang, f.key, opt) }}</option>
+                {% endfor %}
+              </select>
+
+            {% elif f.kind == 'multiselect' %}
+              <div class="checks">
+                {% for opt in f.options %}
+                  <label class="check">
+                    <input type="checkbox" name="{{ f.key }}" value="{{ opt }}">
+                    <span>{{ option_label(lang, f.key, opt) }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
       {% endif %}
-    </div>
+    </fieldset>
   {% endfor %}
 
   <p class="hint">{{ t('required_hint') }}</p>
-  <p class="consent">{{ t('consent') }}</p>
+  <label class="consent-box">
+    <input type="checkbox" id="consent" name="consent" value="1" required>
+    <span>{{ t('consent') }}</span>
+  </label>
   <button type="submit" class="submit-btn" id="submit-btn"
           data-sending="{{ t('submitting') }}">{{ t('submit') }}</button>
 </form>
@@ -63,7 +82,6 @@
 
 {% block scripts %}
 <script>
-  // Prevent double-submit on the kiosk: disable + relabel on first click.
   document.getElementById('intake').addEventListener('submit', function () {
     var b = document.getElementById('submit-btn');
     b.disabled = true;

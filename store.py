@@ -72,11 +72,6 @@ def record_submission(lang: str, data: dict, candidate: dict) -> dict:
         "workable_id": None,
         "error": None,
         "attempts": 0,
-        # Interview reminder (set later if the form carried an interview date/time).
-        "interview_at": (data.get("interview_at") or None),
-        "reminder_status": None,
-        "appointment_id": None,
-        "reminder_detail": None,
     }
     with _lock:
         rows = _read(SUBMISSIONS_PATH)
@@ -104,12 +99,6 @@ def mark_submitted(record_id: str, workable_id: str | None, dry_run: bool = Fals
         attempts=_bump_attempts(record_id),
     )
     _dequeue(record_id)
-
-
-def set_reminder(record_id: str, status: str, appointment_id=None, detail: str = "") -> None:
-    """Record the outcome of pushing the interview to the reminder app."""
-    _update(record_id, reminder_status=status, appointment_id=appointment_id,
-            reminder_detail=detail)
 
 
 def enqueue_failure(record: dict, error: str) -> None:

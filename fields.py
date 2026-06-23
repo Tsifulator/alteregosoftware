@@ -1,53 +1,79 @@
-"""Canonical intake-form field schema — the single source of truth.
+"""Canonical intake-form schema — mirrors ALTER EGO's paper application
+(«ΑΙΤΗΣΗ ΕΡΓΑΣΙΑΣ ΥΠΟΨΗΦΙΟΥ ΕΡΓΑΖΟΜΕΝΟΥ», form E 14-3.5).
 
-Every field is language-neutral here (just keys + types). The human-readable
-label for a field, and for each select option, lives in translations/<lang>.json
-under "labels" and "options" keyed by these same keys. Add a field once here and
-it shows up in every language automatically (with the key as a fallback label
-until translated).
+Candidate-facing sections only (1–4 on the paper form). The HR-internal sections
+(evaluation, contact log, hiring approval) are not part of the candidate intake —
+those happen in Workable afterwards.
 
-Field "kind":
-  text | tel | email | textarea | select | multiselect
+Each field is language-neutral here (key + type + section). Labels and select
+options live per-language in translations/<lang>.json under "labels"/"options",
+keyed by these keys; section titles under "sections".
 
-"target" tells workable_client how the value reaches Workable:
-  direct  -> a first-class Workable candidate field (mapped via WORKABLE_FIELD)
-  summary -> folded into the composed `summary` block HR reads
-  exp     -> becomes a Workable experience_entry
+"kind":   text | tel | email | select | multiselect
+"target": how the value reaches Workable —
+  direct   -> a first-class candidate field (mapped via "workable")
+  address  -> folded into the composed Workable `address`
+  summary  -> folded into the Greek `summary` block HR reads
+Experience rows (section "experience") become Workable experience_entries.
 """
 from __future__ import annotations
 
-# Ordered list of fields as they appear on the form.
+# Section order on the form.
+SECTIONS = ["personal", "education", "experience", "other"]
+
 FIELDS: list[dict] = [
-    {"key": "first_name", "kind": "text", "required": True, "target": "direct", "workable": "firstname", "autocap": True},
-    {"key": "last_name", "kind": "text", "required": True, "target": "direct", "workable": "lastname", "autocap": True},
-    {"key": "phone", "kind": "tel", "required": True, "target": "direct", "workable": "phone"},
-    {"key": "email", "kind": "email", "required": False, "target": "direct", "workable": "email"},
-    {"key": "desired_role", "kind": "select", "required": True, "target": "summary",
-     "options": ["cleaner", "helper", "supervisor", "driver", "security", "kitchen", "gardening", "other"]},
-    {"key": "area", "kind": "text", "required": False, "target": "direct", "workable": "address"},
-    {"key": "greek_level", "kind": "select", "required": False, "target": "summary",
+    # 1 — ΑΤΟΜΙΚΑ ΣΤΟΙΧΕΙΑ (personal details)
+    {"key": "first_name", "section": "personal", "kind": "text", "required": True, "target": "direct", "workable": "firstname"},
+    {"key": "last_name", "section": "personal", "kind": "text", "required": True, "target": "direct", "workable": "lastname"},
+    {"key": "amka", "section": "personal", "kind": "text", "required": False, "target": "summary"},
+    {"key": "address", "section": "personal", "kind": "text", "required": False, "target": "address"},
+    {"key": "address_number", "section": "personal", "kind": "text", "required": False, "target": "address"},
+    {"key": "area", "section": "personal", "kind": "text", "required": False, "target": "address"},
+    {"key": "city", "section": "personal", "kind": "text", "required": False, "target": "address"},
+    {"key": "postal_code", "section": "personal", "kind": "text", "required": False, "target": "address"},
+    {"key": "mobile", "section": "personal", "kind": "tel", "required": True, "target": "direct", "workable": "phone"},
+    {"key": "home_phone", "section": "personal", "kind": "tel", "required": False, "target": "summary"},
+    {"key": "birth_year", "section": "personal", "kind": "text", "required": False, "target": "summary"},
+    {"key": "birth_place", "section": "personal", "kind": "text", "required": False, "target": "summary", "romanize": True},
+    {"key": "nationality", "section": "personal", "kind": "text", "required": False, "target": "summary", "romanize": True},
+    {"key": "email", "section": "personal", "kind": "email", "required": False, "target": "direct", "workable": "email"},
+
+    # 2 — ΕΚΠΑΙΔΕΥΣΗ (education)
+    {"key": "education_level", "section": "education", "kind": "select", "required": False, "target": "summary",
+     "options": ["primary", "gymnasium", "lyceum", "higher", "university"]},
+    {"key": "school", "section": "education", "kind": "text", "required": False, "target": "summary", "romanize": True},
+    {"key": "languages", "section": "education", "kind": "text", "required": False, "target": "summary", "romanize": True},
+    {"key": "greek_level", "section": "education", "kind": "select", "required": False, "target": "summary",
      "options": ["none", "basic", "good", "fluent"]},
-    {"key": "other_languages", "kind": "text", "required": False, "target": "summary"},
-    {"key": "availability", "kind": "select", "required": False, "target": "summary",
-     "options": ["immediate", "full_time", "part_time", "flexible"]},
-    {"key": "shifts", "kind": "multiselect", "required": False, "target": "summary",
-     "options": ["morning", "afternoon", "night", "weekends"]},
-    {"key": "work_permit", "kind": "select", "required": False, "target": "summary",
-     "options": ["yes", "no", "in_process"]},
-    {"key": "amka", "kind": "text", "required": False, "target": "summary"},
-    {"key": "afm", "kind": "text", "required": False, "target": "summary"},
-    {"key": "experience", "kind": "textarea", "required": False, "target": "exp", "freetext": True},
-    {"key": "notes", "kind": "textarea", "required": False, "target": "summary", "freetext": True},
-    # Set by HR during an assisted walk-in. If filled, it's pushed to the SMS
-    # reminder calendar (and noted in the Workable summary). Not a Workable field.
-    {"key": "interview_at", "kind": "datetime", "required": False, "target": "meta"},
+    {"key": "computer_use", "section": "education", "kind": "select", "required": False, "target": "summary",
+     "options": ["fluent", "moderate", "none"]},
+    {"key": "driving_license", "section": "education", "kind": "select", "required": False, "target": "summary",
+     "options": ["yes", "no"]},
+    {"key": "car_owner", "section": "education", "kind": "select", "required": False, "target": "summary",
+     "options": ["yes", "no"]},
+
+    # 4 — ΥΠΟΛΟΙΠΑ ΣΤΟΙΧΕΙΑ (other details)  [section 3 = experience table, below]
+    {"key": "desired_role", "section": "other", "kind": "select", "required": True, "target": "summary",
+     "options": ["cleaner", "helper", "supervisor", "driver", "security", "kitchen", "gardening", "other"]},
+    {"key": "desired_schedule", "section": "other", "kind": "multiselect", "required": False, "target": "summary",
+     "options": ["morning", "afternoon", "evening", "weekend"]},
+    {"key": "referred_by", "section": "other", "kind": "text", "required": False, "target": "summary", "romanize": True},
+    {"key": "referrer_profession", "section": "other", "kind": "text", "required": False, "target": "summary", "romanize": True},
+    {"key": "how_found", "section": "other", "kind": "text", "required": False, "target": "summary", "romanize": True},
 ]
+
+# 3 — ΠΡΟΫΠΗΡΕΣΙΑ (previous experience): a small table → Workable experience_entries.
+EXPERIENCE_ROWS = 3
+EXPERIENCE_COLS = ["company", "position", "period", "reason"]   # ΕΤΑΙΡΙΑ · ΘΕΣΗ · ΔΙΑΣΤΗΜΑ · ΛΟΓΟΣ ΑΠΟΧΩΡΗΣΗΣ
 
 # Convenience lookups.
 BY_KEY: dict[str, dict] = {f["key"]: f for f in FIELDS}
 REQUIRED_KEYS: list[str] = [f["key"] for f in FIELDS if f.get("required")]
-FREETEXT_KEYS: list[str] = [f["key"] for f in FIELDS if f.get("freetext")]
-SELECT_KEYS: list[str] = [f["key"] for f in FIELDS if f["kind"] in ("select", "multiselect")]
+ADDRESS_KEYS: list[str] = [f["key"] for f in FIELDS if f["target"] == "address"]
+
+
+def fields_in(section: str) -> list[dict]:
+    return [f for f in FIELDS if f["section"] == section]
 
 
 def options_for(key: str) -> list[str]:

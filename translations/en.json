@@ -12,34 +12,69 @@
     "change_language": "Change language",
     "start_over": "New application",
     "select_placeholder": "— choose —",
-    "consent": "By submitting, your details are sent to ALTER EGO's recruitment system (Workable) for hiring purposes.",
+    "consent": "I have read and understood ALTER EGO's notice on the processing of personal data, and I consent to the processing of my data for recruitment purposes (EU Reg. 2016/679). I declare that the information above is true.",
+    "consent_ack": "I have read and I agree",
     "error_required": "Please fill in all required fields.",
     "thanks_title": "Thank you!",
     "thanks_body": "Your application has been received. Our team will contact you.",
     "admin_title": "Submissions",
     "admin_retry": "Retry failed",
     "admin_pending": "Waiting to retry",
-    "admin_empty": "No submissions yet."
+    "admin_empty": "No submissions yet.",
+    "exp_add_hint": "Most recent jobs first — leave blank if none."
+  },
+  "sections": {
+    "personal": "Personal details",
+    "education": "Education",
+    "experience": "Previous work experience",
+    "other": "Other details"
+  },
+  "exp": {
+    "company": "Company",
+    "position": "Position",
+    "period": "Period",
+    "reason": "Reason for leaving"
   },
   "labels": {
     "first_name": "First name",
     "last_name": "Last name",
-    "phone": "Phone number",
-    "email": "Email (if you have one)",
-    "desired_role": "Position you want",
-    "area": "Area where you live",
-    "greek_level": "Greek language level",
-    "other_languages": "Other languages you speak",
-    "availability": "Availability",
-    "shifts": "Preferred shifts",
-    "work_permit": "Work permit in Greece",
     "amka": "Social security no. (AMKA)",
-    "afm": "Tax no. (AFM)",
-    "experience": "Previous work experience",
-    "notes": "Anything else we should know",
-    "interview_at": "Interview date & time"
+    "address": "Home address (street)",
+    "address_number": "No.",
+    "area": "Area",
+    "city": "City",
+    "postal_code": "Postal code",
+    "mobile": "Mobile phone",
+    "home_phone": "Home phone",
+    "birth_year": "Year of birth",
+    "birth_place": "Place of birth",
+    "nationality": "Nationality",
+    "email": "Email (if you have one)",
+    "education_level": "Education level",
+    "school": "School / faculty",
+    "languages": "Languages",
+    "greek_level": "Greek language level",
+    "computer_use": "Computer use",
+    "driving_license": "Driving licence",
+    "car_owner": "Car owner",
+    "desired_role": "Position you want",
+    "desired_schedule": "Preferred schedule",
+    "referred_by": "Referred by",
+    "referrer_profession": "Their profession",
+    "how_found": "How did you hear about us?"
   },
   "options": {
+    "education_level": {
+      "primary": "Primary",
+      "gymnasium": "Gymnasium",
+      "lyceum": "Lyceum / high school",
+      "higher": "College",
+      "university": "University"
+    },
+    "greek_level": {"none": "None", "basic": "A little", "good": "Good", "fluent": "Fluent"},
+    "computer_use": {"fluent": "Fluent", "moderate": "Moderate", "none": "None"},
+    "driving_license": {"yes": "Yes", "no": "No"},
+    "car_owner": {"yes": "Yes", "no": "No"},
     "desired_role": {
       "cleaner": "Cleaner",
       "helper": "General helper",
@@ -50,28 +85,11 @@
       "gardening": "Gardening / grounds",
       "other": "Other"
     },
-    "greek_level": {
-      "none": "None",
-      "basic": "A little",
-      "good": "Good",
-      "fluent": "Fluent"
-    },
-    "availability": {
-      "immediate": "Can start immediately",
-      "full_time": "Full-time",
-      "part_time": "Part-time",
-      "flexible": "Flexible"
-    },
-    "shifts": {
+    "desired_schedule": {
       "morning": "Morning",
       "afternoon": "Afternoon",
-      "night": "Night",
-      "weekends": "Weekends"
-    },
-    "work_permit": {
-      "yes": "Yes",
-      "no": "No",
-      "in_process": "In process"
+      "evening": "Evening",
+      "weekend": "Weekend"
     }
   }
 }

@@ -28,9 +28,9 @@ from config import (
     ORG_NAME,
     workable_configured,
 )
-from fields import FIELDS, REQUIRED_KEYS, BY_KEY
+from fields import (FIELDS, REQUIRED_KEYS, BY_KEY, SECTIONS, fields_in,
+                    EXPERIENCE_ROWS, EXPERIENCE_COLS)
 from workable_client import build_candidate, post_candidate
-from reminder_client import schedule_interview
 
 BASE = Path(__file__).resolve().parent
 app = FastAPI(title="ALTER EGO Intake")
@@ -51,6 +51,12 @@ def _ctx(request: Request, lang: str, **extra) -> dict:
         "option_label": i18n.option_label,
         "org": ORG_NAME,
         "fields": FIELDS,
+        "sections": SECTIONS,
+        "fields_in": fields_in,
+        "section_title": lambda s: i18n.section_title(lang, s),
+        "exp_label": lambda c: i18n.exp_label(lang, c),
+        "exp_rows": range(1, EXPERIENCE_ROWS + 1),
+        "exp_cols": EXPERIENCE_COLS,
         "kiosk": KIOSK_MODE,
     }
     ctx.update(extra)
@@ -87,6 +93,14 @@ async def submit(request: Request):
         else:
             data[key] = (form.get(key) or "").strip()
 
+    # Previous-experience table: exp_<row>_<col> -> list of {company,position,period,reason}.
+    rows = []
+    for n in range(1, EXPERIENCE_ROWS + 1):
+        row = {c: (form.get(f"exp_{n}_{c}") or "").strip() for c in EXPERIENCE_COLS}
+        if any(row.values()):
+            rows.append(row)
+    data["experience_rows"] = rows
+
     # Server-side required check — re-render the form with an error banner if short.
     missing = [k for k in REQUIRED_KEYS if not data.get(k)]
     if missing:
@@ -103,19 +117,6 @@ async def submit(request: Request):
     else:
         store.enqueue_failure(record, err or "unknown error")
         print(f"  ⚠ queued submission {record['id']} for retry: {err}")
-
-    # 4) If HR set an interview date/time, push it to the SMS-reminder calendar.
-    #    Best-effort: failures are recorded for /admin, never shown to the candidate.
-    if data.get("interview_at"):
-        r_ok, appt_id, r_status, r_detail = schedule_interview(
-            name=f"{candidate['firstname']} {candidate['lastname']}".strip(),
-            first_name=candidate["firstname"],
-            phone=candidate["phone"],
-            interview_at=data["interview_at"],
-            lang=lang,
-        )
-        store.set_reminder(record["id"], r_status, appt_id, r_detail)
-        print(f"  reminder for {record['id']}: {r_status} — {r_detail}")
 
     return RedirectResponse(url=f"/thanks/{lang}", status_code=303)
 
