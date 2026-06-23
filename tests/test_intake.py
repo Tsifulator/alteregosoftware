@@ -190,3 +190,43 @@ def test_queue_and_retry(tmp_path, monkeypatch):
     assert store.retry_failed(flaky)["succeeded"] == 1
     assert store.load_queue() == []
     importlib.reload(config); importlib.reload(store)
+
+
+# ── digital signature ────────────────────────────────────────────────────────
+
+# a 1x1 transparent PNG as a data URL
+_PNG = ("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4"
+        "2mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=")
+
+
+def test_is_signature_validation():
+    import store
+    assert store.is_signature(_PNG)
+    assert not store.is_signature("")
+    assert not store.is_signature("hello")
+    assert not store.is_signature("data:image/png;base64,")   # too short / empty
+
+
+def test_save_signature_writes_png(tmp_path, monkeypatch):
+    import importlib
+    monkeypatch.setenv("SUBMISSIONS_PATH", str(tmp_path / "subs.json"))
+    monkeypatch.setenv("QUEUE_PATH", str(tmp_path / "queue.json"))
+    monkeypatch.setenv("SIGNATURES_DIR", str(tmp_path / "sigs"))
+    import config, store
+    importlib.reload(config); importlib.reload(store)
+
+    rec = store.record_submission("el", {"first_name": "A", "last_name": "B"}, {})
+    assert rec["signed"] is False
+    fname = store.save_signature(rec["id"], _PNG)
+    assert fname == f"{rec['id']}.png"
+    assert store.signature_path(rec["id"]).exists()
+    assert store.load_submissions()[0]["signed"] is True
+    assert store.save_signature(rec["id"], "not-an-image") is None
+    importlib.reload(config); importlib.reload(store)
+
+
+def test_signed_flag_noted_in_summary():
+    cand, _ = wc.build_candidate("el", {
+        "first_name": "Μαρία", "last_name": "Παπά", "mobile": "6971234567",
+        "desired_role": "cleaner", "signed": True})
+    assert "Υπογραφή: ✔" in cand["summary"]

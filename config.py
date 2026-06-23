@@ -24,6 +24,10 @@ LOGS_DIR.mkdir(exist_ok=True)
 SUBMISSIONS_PATH = Path(os.getenv("SUBMISSIONS_PATH", str(PROJECT_ROOT / "submissions.json")))
 # Submissions that failed to reach Workable wait here for a retry.
 QUEUE_PATH = Path(os.getenv("QUEUE_PATH", str(PROJECT_ROOT / "queue.json")))
+# Candidate signature images (PNG, one per submission). Personal data → gitignored,
+# overridable onto a persistent volume like the other paths.
+SIGNATURES_DIR = Path(os.getenv("SIGNATURES_DIR", str(PROJECT_ROOT / "signatures")))
+SIGNATURES_DIR.mkdir(exist_ok=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Workable API — credentials are shared with alteregohr (copy them from

@@ -75,6 +75,17 @@
     <input type="checkbox" id="consent" name="consent" value="1" required>
     <span>{{ t('consent') }}</span>
   </label>
+
+  <div class="sig-field">
+    <label>{{ t('signature_label') }} <span class="req">*</span></label>
+    <p class="hint">{{ t('signature_hint') }}</p>
+    <div class="sig-wrap">
+      <canvas id="sigpad" class="sigpad" aria-label="{{ t('signature_label') }}"></canvas>
+      <button type="button" class="sig-clear" id="sig-clear">↺ {{ t('signature_clear') }}</button>
+    </div>
+    <input type="hidden" name="signature" id="signature">
+  </div>
+
   <button type="submit" class="submit-btn" id="submit-btn"
           data-sending="{{ t('submitting') }}">{{ t('submit') }}</button>
 </form>
@@ -82,7 +93,45 @@
 
 {% block scripts %}
 <script>
-  document.getElementById('intake').addEventListener('submit', function () {
+  // Signature pad — finger / stylus / mouse, no dependencies (works offline on a kiosk).
+  (function () {
+    var canvas = document.getElementById('sigpad');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var drawing = false, dirty = false;
+    function resize() {
+      var ratio = Math.max(window.devicePixelRatio || 1, 1);
+      var rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * ratio;
+      canvas.height = rect.height * ratio;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(ratio, ratio);
+      ctx.lineWidth = 2.2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.strokeStyle = '#0A1326';
+    }
+    setTimeout(resize, 0);
+    window.addEventListener('resize', resize);
+    function pt(e) { var r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+    canvas.addEventListener('pointerdown', function (e) { drawing = true; var p = pt(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); canvas.classList.remove('sig-error'); e.preventDefault(); });
+    canvas.addEventListener('pointermove', function (e) { if (!drawing) return; var p = pt(e); ctx.lineTo(p.x, p.y); ctx.stroke(); dirty = true; e.preventDefault(); });
+    window.addEventListener('pointerup', function () { drawing = false; });
+    document.getElementById('sig-clear').addEventListener('click', function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); dirty = false;
+      document.getElementById('signature').value = '';
+    });
+    window.__sigDirty = function () { return dirty; };
+    window.__sigData = function () { return dirty ? canvas.toDataURL('image/png') : ''; };
+  })();
+
+  document.getElementById('intake').addEventListener('submit', function (ev) {
+    if (window.__sigDirty && !window.__sigDirty()) {           // require a signature
+      ev.preventDefault();
+      var c = document.getElementById('sigpad');
+      c.classList.add('sig-error');
+      c.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if (window.__sigData) document.getElementById('signature').value = window.__sigData();
     var b = document.getElementById('submit-btn');
     b.disabled = true;
     b.textContent = b.dataset.sending;

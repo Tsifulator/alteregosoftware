@@ -118,6 +118,8 @@ def _compose_summary(lang: str, data: dict, no_email: bool, orig_name: str | Non
         lines.append("⚠ Χωρίς email — επικοινωνία μέσω τηλεφώνου.")
     if orig_name:
         lines.append(f"Όνομα (πρωτότυπη γραφή): {orig_name}")
+    if data.get("signed"):
+        lines.append("Υπογραφή: ✔ ψηφιακή υπογραφή ελήφθη (αρχείο στο intake app)")
     lines.append("")
 
     for f in FIELDS:

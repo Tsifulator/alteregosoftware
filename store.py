@@ -16,13 +16,14 @@ double-tap on the kiosk can't corrupt the file.
 """
 from __future__ import annotations
 
+import base64
 import json
 import os
 import threading
 import uuid
 from datetime import datetime, timezone
 
-from config import SUBMISSIONS_PATH, QUEUE_PATH
+from config import SUBMISSIONS_PATH, QUEUE_PATH, SIGNATURES_DIR
 
 _lock = threading.Lock()
 
@@ -72,6 +73,8 @@ def record_submission(lang: str, data: dict, candidate: dict) -> dict:
         "workable_id": None,
         "error": None,
         "attempts": 0,
+        "signed": False,
+        "signature_file": None,
     }
     with _lock:
         rows = _read(SUBMISSIONS_PATH)
@@ -99,6 +102,36 @@ def mark_submitted(record_id: str, workable_id: str | None, dry_run: bool = Fals
         attempts=_bump_attempts(record_id),
     )
     _dequeue(record_id)
+
+
+def save_signature(record_id: str, data_url: str) -> str | None:
+    """Decode a 'data:image/png;base64,…' signature and save it as <id>.png.
+
+    Returns the filename, or None if the payload isn't a valid image data URL.
+    """
+    if not data_url or not data_url.startswith("data:image") or "," not in data_url:
+        return None
+    try:
+        raw = base64.b64decode(data_url.split(",", 1)[1], validate=True)
+    except (ValueError, Exception):
+        return None
+    if not raw:
+        return None
+    fname = f"{record_id}.png"
+    (SIGNATURES_DIR / fname).write_bytes(raw)
+    _update(record_id, signed=True, signature_file=fname)
+    return fname
+
+
+def signature_path(record_id: str):
+    """Path to a stored signature PNG (for the admin viewer), or None."""
+    p = SIGNATURES_DIR / f"{record_id}.png"
+    return p if p.exists() else None
+
+
+def is_signature(data_url: str) -> bool:
+    """True if the value looks like a non-empty image data URL (for validation)."""
+    return bool(data_url) and data_url.startswith("data:image") and len(data_url) > 100
 
 
 def enqueue_failure(record: dict, error: str) -> None:

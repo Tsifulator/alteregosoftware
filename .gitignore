@@ -4,6 +4,7 @@
 # local candidate data — NEVER commit personal data
 submissions.json
 queue.json
+signatures/
 logs/
 *.tmp
 

@@ -13,7 +13,7 @@ Mirrors the FastAPI + uvicorn style of alteregohr/reminder/app.py.
 from __future__ import annotations
 
 from fastapi import FastAPI, Form, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
@@ -101,14 +101,18 @@ async def submit(request: Request):
             rows.append(row)
     data["experience_rows"] = rows
 
-    # Server-side required check — re-render the form with an error banner if short.
+    # Server-side required check: required fields + consent + a drawn signature.
+    signature = (form.get("signature") or "").strip()
     missing = [k for k in REQUIRED_KEYS if not data.get(k)]
-    if missing:
+    if missing or not form.get("consent") or not store.is_signature(signature):
         return RedirectResponse(url=f"/form/{lang}?error=1", status_code=303)
+
+    data["signed"] = True   # noted in the Workable summary; the image is stored separately
 
     # 1) Persist FIRST so the candidate's data is never lost.
     candidate, meta = build_candidate(lang, data)
     record = store.record_submission(lang, data, candidate)
+    store.save_signature(record["id"], signature)
 
     # 2) Try Workable. 3) Never show the candidate an error — queue on failure.
     ok, workable_id, err = post_candidate(candidate)
@@ -158,6 +162,17 @@ def admin(request: Request, pin: str = ""):
             configured=workable_configured(),
         ),
     )
+
+
+@app.get("/admin/signature/{record_id}")
+def admin_signature(record_id: str, pin: str = ""):
+    """Serve a candidate's signature PNG (PIN-gated)."""
+    if not _admin_ok(pin):
+        return HTMLResponse("unauthorized", status_code=401)
+    p = store.signature_path(record_id)
+    if not p:
+        return HTMLResponse("not found", status_code=404)
+    return FileResponse(str(p), media_type="image/png")
 
 
 @app.post("/admin/retry")
