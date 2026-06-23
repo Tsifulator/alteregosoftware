@@ -186,3 +186,50 @@ def test_queue_and_retry(tmp_path, monkeypatch):
 
 def test_required_keys_are_the_three_essentials():
     assert set(REQUIRED_KEYS) == {"first_name", "last_name", "phone", "desired_role"}
+
+
+# ── interview date/time → summary + reminder client ──────────────────────────
+
+def test_interview_time_appears_in_greek_summary():
+    cand, _ = wc.build_candidate("ar", {
+        "first_name": "Ali", "last_name": "Hassan", "phone": "6971234567",
+        "desired_role": "cleaner", "interview_at": "2026-06-28T14:30",
+    })
+    assert "Συνέντευξη: 28/06 14:30" in cand["summary"]
+
+
+def test_format_interview_handles_blank_and_bad():
+    assert wc.format_interview("") == ""
+    assert wc.format_interview(None) == ""
+    assert wc.format_interview("2026-06-28T09:05") == "28/06 09:05"
+    assert wc.format_interview("not-a-date") == "not-a-date"   # never raises
+
+
+def test_reminder_client_dry_run_builds_payload(tmp_path, monkeypatch):
+    import reminder_client as rc
+    monkeypatch.setattr(rc, "DRY_RUN", True)
+    monkeypatch.setattr(rc, "LOGS_DIR", tmp_path)
+    ok, appt_id, status, detail = rc.schedule_interview(
+        name="Maria Ivanova", first_name="Maria", phone="+306971234567",
+        interview_at="2026-06-28T14:00", lang="ru")
+    assert ok and status == "dry" and appt_id is None
+    files = list(tmp_path.glob("reminder-*.json"))
+    assert files, "DRY_RUN should write a reminder payload"
+    import json
+    payload = json.loads(files[0].read_text(encoding="utf-8"))
+    assert payload["preferred_language"] == "ru"
+    assert payload["datetime_iso"].startswith("2026-06-28T14:00")
+    assert payload["phone"] == "+306971234567"
+
+
+def test_reminder_client_skips_when_no_interview():
+    import reminder_client as rc
+    ok, appt_id, status, _ = rc.schedule_interview("A B", "A", "+306971234567", "", "el")
+    assert not ok and status == "no_interview"
+
+
+def test_to_iso_parsing():
+    import reminder_client as rc
+    assert rc.to_iso("2026-06-28T14:00").startswith("2026-06-28T14:00")
+    assert rc.to_iso("") is None
+    assert rc.to_iso("garbage") is None

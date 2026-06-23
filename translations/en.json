@@ -36,7 +36,8 @@
     "amka": "Social security no. (AMKA)",
     "afm": "Tax no. (AFM)",
     "experience": "Previous work experience",
-    "notes": "Anything else we should know"
+    "notes": "Anything else we should know",
+    "interview_at": "Interview date & time"
   },
   "options": {
     "desired_role": {

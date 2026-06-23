@@ -38,6 +38,9 @@ FIELDS: list[dict] = [
     {"key": "afm", "kind": "text", "required": False, "target": "summary"},
     {"key": "experience", "kind": "textarea", "required": False, "target": "exp", "freetext": True},
     {"key": "notes", "kind": "textarea", "required": False, "target": "summary", "freetext": True},
+    # Set by HR during an assisted walk-in. If filled, it's pushed to the SMS
+    # reminder calendar (and noted in the Workable summary). Not a Workable field.
+    {"key": "interview_at", "kind": "datetime", "required": False, "target": "meta"},
 ]
 
 # Convenience lookups.

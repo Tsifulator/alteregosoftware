@@ -29,6 +29,10 @@
       {% elif f.kind == 'textarea' %}
         <textarea id="{{ f.key }}" name="{{ f.key }}" rows="3"></textarea>
 
+      {% elif f.kind == 'datetime' %}
+        <input id="{{ f.key }}" name="{{ f.key }}" type="datetime-local"
+               {% if f.required %}required{% endif %}>
+
       {% elif f.kind == 'select' %}
         <select id="{{ f.key }}" name="{{ f.key }}" {% if f.required %}required{% endif %}>
           <option value="" {% if f.required %}disabled{% endif %} selected>{{ t('select_placeholder') }}</option>

@@ -57,6 +57,14 @@ ORG_NAME = os.getenv("ORG_NAME", "ALTER EGO")
 # Default country code prepended to phone numbers entered without one.
 DEFAULT_PHONE_CC = os.getenv("DEFAULT_PHONE_CC", "+30")
 
+# --- Interview SMS reminders (the alteregohr/reminder app) ---
+# When an intake submission includes an interview date/time, push it to the
+# reminder app's POST /appointments so it schedules the bilingual reminder SMS.
+REMINDER_API_URL = os.getenv("REMINDER_API_URL", "").strip().rstrip("/")
+REMINDER_API_KEY = os.getenv("REMINDER_API_KEY", "").strip()   # sent as X-API-Key
+# Enabled automatically once a URL is set; set REMINDER_ENABLED=false to force off.
+REMINDER_ENABLED = bool(REMINDER_API_URL) and os.getenv("REMINDER_ENABLED", "true").lower() == "true"
+
 # If true, never call Workable — write the would-be payload to logs/ instead.
 DRY_RUN = os.getenv("DRY_RUN", "false").lower() == "true"
 

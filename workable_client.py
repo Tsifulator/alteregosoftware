@@ -58,6 +58,20 @@ def _synth_email(phone: str) -> str:
     return f"candidate.{digits}@{PLACEHOLDER_EMAIL_DOMAIN}"
 
 
+def format_interview(raw) -> str:
+    """Format a datetime-local value ('2026-06-28T14:00') as 'dd/mm HH:MM' for HR.
+
+    Returns '' for blank/unparseable input — never raises.
+    """
+    raw = (raw or "").strip()
+    if not raw:
+        return ""
+    try:
+        return datetime.fromisoformat(raw).strftime("%d/%m %H:%M")
+    except (ValueError, TypeError):
+        return raw
+
+
 def _to_latin(text: str, lang: str) -> str:
     """Romanize a non-Latin name/place to the Latin alphabet for Workable.
 
@@ -123,6 +137,9 @@ def _compose_summary(lang: str, data: dict, no_email: bool, orig_name: str | Non
         lines.append("⚠ Χωρίς email — επικοινωνία μέσω τηλεφώνου.")
     if orig_name:
         lines.append(f"Όνομα (πρωτότυπη γραφή): {orig_name}")
+    interview = format_interview(data.get("interview_at"))
+    if interview:
+        lines.append(f"Συνέντευξη: {interview}")
     lines.append("")
 
     for f in FIELDS:

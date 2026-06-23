@@ -25,7 +25,7 @@
 
   {% if submissions %}
   <table class="subs">
-    <thead><tr><th>Time</th><th>Name</th><th>Lang</th><th>Status</th><th>Workable</th><th>Note</th></tr></thead>
+    <thead><tr><th>Time</th><th>Name</th><th>Lang</th><th>Status</th><th>Workable</th><th>Interview / SMS</th><th>Note</th></tr></thead>
     <tbody>
       {% for s in submissions %}
       <tr class="st-{{ s.status }}">
@@ -34,7 +34,8 @@
         <td>{{ s.lang }}</td>
         <td>{{ s.status }}</td>
         <td>{{ s.workable_id or '—' }}</td>
-        <td><small>{{ s.error or '' }}</small></td>
+        <td><small>{% if s.interview_at %}{{ s.interview_at[:16] }} · {{ s.reminder_status or '—' }}{% else %}—{% endif %}</small></td>
+        <td><small>{{ s.error or '' }}{% if s.reminder_detail and s.reminder_status not in ('scheduled','dry','already_scheduled') %} · SMS: {{ s.reminder_detail }}{% endif %}</small></td>
       </tr>
       {% endfor %}
     </tbody>

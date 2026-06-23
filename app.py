@@ -30,6 +30,7 @@ from config import (
 )
 from fields import FIELDS, REQUIRED_KEYS, BY_KEY
 from workable_client import build_candidate, post_candidate
+from reminder_client import schedule_interview
 
 BASE = Path(__file__).resolve().parent
 app = FastAPI(title="ALTER EGO Intake")
@@ -102,6 +103,19 @@ async def submit(request: Request):
     else:
         store.enqueue_failure(record, err or "unknown error")
         print(f"  ⚠ queued submission {record['id']} for retry: {err}")
+
+    # 4) If HR set an interview date/time, push it to the SMS-reminder calendar.
+    #    Best-effort: failures are recorded for /admin, never shown to the candidate.
+    if data.get("interview_at"):
+        r_ok, appt_id, r_status, r_detail = schedule_interview(
+            name=f"{candidate['firstname']} {candidate['lastname']}".strip(),
+            first_name=candidate["firstname"],
+            phone=candidate["phone"],
+            interview_at=data["interview_at"],
+            lang=lang,
+        )
+        store.set_reminder(record["id"], r_status, appt_id, r_detail)
+        print(f"  reminder for {record['id']}: {r_status} — {r_detail}")
 
     return RedirectResponse(url=f"/thanks/{lang}", status_code=303)
 
