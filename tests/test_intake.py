@@ -36,8 +36,8 @@ def _offline_llm(monkeypatch):
 def test_all_shipped_languages_load():
     codes = set(i18n.available_codes())
     # baseline + a spread of the labour-pool languages, incl. the newer batch
-    assert {"el", "en", "ar", "ka", "tl", "am", "ta", "si", "pa", "ne", "tr", "fr", "ps"} <= codes
-    assert len(codes) >= 23
+    assert {"el", "en", "ar", "ka", "tl", "am", "ta", "si", "pa", "ne", "tr", "fr", "ps", "vi"} <= codes
+    assert len(codes) >= 24
 
 
 def test_rtl_flagged_for_arabic_urdu_farsi():

@@ -1,5 +1,5 @@
 {
-  "_meta": {"name": "Tagalog", "english_name": "Tagalog / Filipino", "dir": "ltr", "flag": "🇵🇭", "needs_review": true},
+  "_meta": {"name": "Filipino / Tagalog", "english_name": "Filipino / Tagalog", "dir": "ltr", "flag": "🇵🇭", "needs_review": true},
   "ui": {
     "pick_language_title": "Maligayang pagdating",
     "pick_language_sub": "Pakipili ang iyong wika",

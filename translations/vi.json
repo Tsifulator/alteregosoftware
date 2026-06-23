@@ -1,0 +1,57 @@
+{
+  "_meta": {"name": "Tiếng Việt", "english_name": "Vietnamese", "dir": "ltr", "flag": "🇻🇳", "needs_review": true},
+  "ui": {
+    "pick_language_title": "Chào mừng",
+    "pick_language_sub": "Vui lòng chọn ngôn ngữ của bạn",
+    "form_title": "Đơn xin việc",
+    "form_sub": "Vui lòng điền thông tin của bạn bên dưới",
+    "required_hint": "Các trường có dấu * là bắt buộc",
+    "submit": "Gửi",
+    "submitting": "Đang gửi…",
+    "back": "Quay lại",
+    "change_language": "Đổi ngôn ngữ",
+    "start_over": "Đơn mới",
+    "select_placeholder": "— chọn —",
+    "consent": "Khi gửi, thông tin của bạn được chuyển đến hệ thống tuyển dụng của ALTER EGO (Workable) cho mục đích tuyển dụng.",
+    "error_required": "Vui lòng điền tất cả các trường bắt buộc.",
+    "thanks_title": "Cảm ơn bạn!",
+    "thanks_body": "Đơn của bạn đã được nhận. Đội ngũ của chúng tôi sẽ liên hệ với bạn.",
+    "admin_title": "Đơn ứng tuyển",
+    "admin_retry": "Thử lại các đơn thất bại",
+    "admin_pending": "Đang chờ thử lại",
+    "admin_empty": "Chưa có đơn nào."
+  },
+  "labels": {
+    "first_name": "Tên",
+    "last_name": "Họ",
+    "phone": "Số điện thoại",
+    "email": "Email (nếu có)",
+    "desired_role": "Vị trí mong muốn",
+    "area": "Khu vực bạn sống",
+    "greek_level": "Trình độ tiếng Hy Lạp",
+    "other_languages": "Các ngôn ngữ khác bạn nói",
+    "availability": "Khả năng làm việc",
+    "shifts": "Ca làm ưu tiên",
+    "work_permit": "Giấy phép lao động ở Hy Lạp",
+    "amka": "Số bảo hiểm xã hội (AMKA)",
+    "afm": "Mã số thuế (AFM)",
+    "experience": "Kinh nghiệm làm việc trước đây",
+    "notes": "Bất cứ điều gì khác chúng tôi nên biết"
+  },
+  "options": {
+    "desired_role": {
+      "cleaner": "Nhân viên vệ sinh",
+      "helper": "Phụ việc chung",
+      "supervisor": "Giám sát / trưởng nhóm",
+      "driver": "Tài xế",
+      "security": "Bảo vệ",
+      "kitchen": "Bếp / phục vụ ăn uống",
+      "gardening": "Làm vườn / cây xanh",
+      "other": "Khác"
+    },
+    "greek_level": {"none": "Không", "basic": "Một chút", "good": "Tốt", "fluent": "Thành thạo"},
+    "availability": {"immediate": "Có thể bắt đầu ngay", "full_time": "Toàn thời gian", "part_time": "Bán thời gian", "flexible": "Linh hoạt"},
+    "shifts": {"morning": "Sáng", "afternoon": "Chiều", "night": "Đêm", "weekends": "Cuối tuần"},
+    "work_permit": {"yes": "Có", "no": "Không", "in_process": "Đang xử lý"}
+  }
+}
